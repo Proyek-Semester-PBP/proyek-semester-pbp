@@ -1,0 +1,1 @@
+web: gunicorn Proyek_Semester_PBP.wsgi --log-file -
