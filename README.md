@@ -23,6 +23,9 @@ Dashboard
 Profile page
 > Pada halaman ini, terdapat informasi dari pengguna yang sedang login, mulai dari username, data pribadi, jumlah poin, dan histori kegiatan recycle
 
+Sign in, sign out, register page
+> Halaman yang bertujuan untuk mendaftar bagi pengguna baru dan login untuk pengguna yang sudah memiliki akun. 
+
 Shopping page
 > Pada halaman ini, pengguna dapat melihat daftar produk hasil daur ulang yang dijual dan ketika diklik, pengguna akan diarahkan menuju link e-commerce produk tersebut
 
