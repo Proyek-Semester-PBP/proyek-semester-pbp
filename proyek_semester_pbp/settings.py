@@ -42,7 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
+    'profilepage',
     'recycle',
+    'redeem',
+    'shopping',
+    'news',
 ]
 
 MIDDLEWARE = [
