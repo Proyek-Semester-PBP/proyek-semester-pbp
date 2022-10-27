@@ -1,0 +1,236 @@
+[
+    {
+        "model":"redeem.voucher",
+        "pk":1,
+        "fields":{
+            "jenis_voucher":"voucher belanja",
+            "title_voucher" : "Voucher Belanja Rp25rb",
+            "product_voucher" : "Indomaret",            
+            "harga_poin":"24000",
+            "deskripsi": "Bikin sakit Maag karena harganya mahal."
+        }
+    },
+    {
+        "model":"redeem.voucher",
+        "pk":2,
+        "fields":{
+            "jenis_voucher":"voucher belanja",
+            "title_voucher" : "Voucher Belanja Rp50rb",
+            "product_voucher" : "Indomaret",
+            "harga_poin":"49000",
+            "deskripsi": "Bikin sakit Maag karena harganya mahal."
+        }
+    },
+    {
+        "model":"redeem.voucher",
+        "pk":3,
+        "fields":{
+            "jenis_voucher":"voucher belanja",
+            "title_voucher" : "Voucher Belanja Rp100rb",
+            "product_voucher" : "Indomaret",
+            "harga_poin":"99000",
+            "deskripsi": "Bikin sakit Maag karena harganya mahal."
+        }
+    },
+    {
+        "model":"redeem.voucher",
+        "pk":4,
+        "fields":{
+            "jenis_voucher":"voucher belanja",
+            "title_voucher" : "Voucher Belanja Rp25rb",
+            "product_voucher" : "Alfamart",
+            "harga_poin":"24000",
+            "deskripsi": "Bikin sakit Maag karena harganya mahal."
+        }
+    },
+    {
+        "model":"redeem.voucher",
+        "pk":5,
+        "fields":{
+            "jenis_voucher":"voucher belanja",
+            "title_voucher" : "Voucher Belanja Rp50rb",
+            "product_voucher" : "Alfamart",
+            "harga_poin":"49000",
+            "deskripsi": "Bikin sakit Maag karena harganya mahal."
+        }
+    },
+    {
+        "model":"redeem.voucher",
+        "pk":6,
+        "fields":{
+            "jenis_voucher":"voucher belanja",
+            "title_voucher" : "Voucher Belanja Rp100rb",
+            "product_voucher" : "Alfamart",
+            "harga_poin":"99000",
+            "deskripsi": "Bikin sakit Maag karena harganya mahal."
+        }
+    },
+    {
+        "model":"redeem.voucher",
+        "pk":7,
+        "fields":{
+            "jenis_voucher":"pulsa",
+            "title_voucher" : "Pulsa Telkomsel Rp10rb",
+            "product_voucher" : "Telkomsel",
+            "harga_poin":"9000",
+            "deskripsi": "Bikin sakit Maag karena harganya mahal."
+        }
+    },
+    
+    {
+        "model":"redeem.voucher",
+        "pk":8,
+        "fields":{
+            "jenis_voucher":"voucher belanja",
+            "title_voucher" : "Pulsa Telkomsel Rp25rb",
+            "product_voucher" : "Telkomsel",
+            "harga_poin":"24000",
+            "deskripsi": "Bikin sakit Maag karena harganya mahal."
+        }
+    },
+    {
+        "model":"redeem.voucher",
+        "pk":9,
+        "fields":{
+            "jenis_voucher":"voucher belanja",
+            "title_voucher" : "Pulsa Telkomsel Rp50rb",
+            "product_voucher" : "Telkomsel",
+            "harga_poin":"49000",
+            "deskripsi": "Bikin sakit Maag karena harganya mahal."
+        }
+    },
+    {
+        "model":"redeem.voucher",
+        "pk":10,
+        "fields":{
+            "jenis_voucher":"voucher belanja",
+            "title_voucher" : "Pulsa XL Rp10rb",
+            "product_voucher" : "XL",
+            "harga_poin":"9000",
+            "deskripsi": "Bikin sakit Maag karena harganya mahal."
+        }
+    },
+    {
+        "model":"redeem.voucher",
+        "pk":11,
+        "fields":{
+            "jenis_voucher":"voucher belanja",
+            "title_voucher" : "Pulsa XL Rp25rb",
+            "product_voucher" : "XL",
+            "harga_poin":"24000",
+            "deskripsi": "Bikin sakit Maag karena harganya mahal."
+        }
+    },
+    {
+        "model":"redeem.voucher",
+        "pk":12,
+        "fields":{
+            "jenis_voucher":"voucher belanja",
+            "title_voucher" : "Pulsa XL Rp50rb",
+            "product_voucher" : "XL",
+            "harga_poin":"49000",
+            "deskripsi": "Bikin sakit Maag karena harganya mahal."
+        }
+    },
+    {
+        "model":"redeem.voucher",
+        "pk":13,
+        "fields":{
+            "jenis_voucher":"pulsa",
+            "title_voucher" : "Pulsa Indosat Rp10rb",
+            "product_voucher" : "Indosat",
+            "harga_poin":"9000",
+            "deskripsi": "Bikin sakit Maag karena harganya mahal."
+        }
+    },
+    {
+        "model":"redeem.voucher",
+        "pk":14,
+        "fields":{
+            "jenis_voucher":"voucher belanja",
+            "title_voucher" : "Pulsa Indosat Rp25rb",
+            "product_voucher" : "Indosat",
+            "harga_poin":"24000",
+            "deskripsi": "Bikin sakit Maag karena harganya mahal."
+        }
+    },
+    {
+        "model":"redeem.voucher",
+        "pk":15,
+        "fields":{
+            "jenis_voucher":"voucher belanja",
+            "title_voucher" : "Pulsa Indosat Rp50rb",
+            "product_voucher" : "Indosat",
+            "harga_poin":"49000",
+            "deskripsi": "Bikin sakit Maag karena harganya mahal."
+        }
+    },
+
+
+    {
+        "model":"redeem.voucher",
+        "pk":16,
+        "fields":{
+            "jenis_voucher":"paket data bulanan",
+            "title_voucher" : "Paket data ",
+            "product_voucher" : "paket data",
+            "harga_poin":"9000",
+            "deskripsi": "Bikin sakit Maag karena harganya mahal."
+        }
+    },
+    {
+        "model":"redeem.voucher",
+        "pk":17,
+        "fields":{
+            "jenis_voucher":"paket data bulanan",
+            "title_voucher" : "Paket data ",
+            "product_voucher" : "paket data",
+            "harga_poin":"9000",
+            "deskripsi": "Bikin sakit Maag karena harganya mahal."
+        }
+    },
+    {
+        "model":"redeem.voucher",
+        "pk":18,
+        "fields":{
+            "jenis_voucher":"paket data bulanan",
+            "title_voucher" : "Paket data ",
+            "product_voucher" : "paket data",
+            "harga_poin":"9000",
+            "deskripsi": "Bikin sakit Maag karena harganya mahal."
+        }
+    },
+    {
+        "model":"redeem.voucher",
+        "pk":19,
+        "fields":{
+            "jenis_voucher":"paket data bulanan",
+            "title_voucher" : "Paket data ",
+            "product_voucher" : "paket data",
+            "harga_poin":"9000",
+            "deskripsi": "Bikin sakit Maag karena harganya mahal."
+        }
+    },
+    {
+        "model":"redeem.voucher",
+        "pk":20,
+        "fields":{
+            "jenis_voucher":"paket data bulanan",
+            "title_voucher" : "Paket data ",
+            "product_voucher" : "paket data",
+            "harga_poin":"9000",
+            "deskripsi": "Bikin sakit Maag karena harganya mahal."
+        }
+    },
+    {
+        "model":"redeem.voucher",
+        "pk":21,
+        "fields":{
+            "jenis_voucher":"paket data bulanan",
+            "title_voucher" : "Paket data ",
+            "product_voucher" : "paket data",
+            "harga_poin":"9000",
+            "deskripsi": "Bikin sakit Maag karena harganya mahal."
+        }
+    }
+]
