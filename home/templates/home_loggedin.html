@@ -12,7 +12,9 @@
 
 <body>
     This is the homepage.
-    <a href="{% url 'home:login_user' %}">login</a>
+    <h3>Hi {{user.username}}</h3>
+    <br>
+    <a class="btn btn-dark" href="{% url 'home:logout_user' %}" role="button">Logout</a>
 </body>
 
 {% endblock content %}

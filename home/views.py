@@ -3,10 +3,15 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def show_homepage(request):
     return render(request, "home.html")
+
+@login_required(login_url='/home/login/')
+def show_home_loggedin(request):
+    return render(request, "home_loggedin.html")
 
 def login_user(request):
     if request.method == 'POST':
@@ -15,7 +20,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            response = HttpResponseRedirect(reverse('home:show_homepage'))
+            response = HttpResponseRedirect(reverse('home:show_home_loggedin'))
             return response
 
     context = {}
@@ -28,7 +33,7 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home:login')
+            return redirect('home:login_user')
     
     context = {'form':form}
     return render(request, 'register.html', context)
