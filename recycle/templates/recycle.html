@@ -2,16 +2,142 @@
 
 {% block meta %}
 
-<head>
-    <title>Recycle</title>
-</head>
+<title>Recycle</title>
 
 {% endblock meta %}
 
 {% block content %}
 
-<body>
-    This is the recycling page.
-</body>
+<p>this is recycling page</p>
+{% load static %}
+
+<p>hi, {{user.username}}</p>
+
+<div class="row row-cols-1 row-cols-md-3 g-4 md:justify-end gap-4" id="main-div">
+    <div class="card col-sm-4 mb-1 mt-4 mx-auto" style="width: 18rem;">
+        <div class="card-body">
+            <h4 class="card-title text-center fw-semibold">AEON Serpong</h4>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">..</li>
+                <li class="list-group-item">..</li>
+            </ul>
+        </div>
+        <div class="card-footer text-center">
+            <a href="https://goo.gl/maps/jBpT577F3SS6bJd28" target="_blank">
+              <img src="{%static 'img/map.png'%}" width="50">
+            </a>
+        </div>
+    </div>
+
+    <div class="card col-sm-4 mb-1 mt-4 mx-auto" style="width: 18rem;">
+        <div class="card-body">
+            <h4 class="card-title text-center fw-semibold">Botani Square</h4>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">..</li>
+                <li class="list-group-item">..</li>
+            </ul>
+        </div>
+        <div class="card-footer text-center">
+            <a href="https://maps.app.goo.gl/ACFxRKRNW9KNbwM96?g_st=iw" target="_blank">
+                <img src="{%static 'img/map.png'%}" width="50">
+            </a>
+        </div>
+    </div>
+
+    <div class="card col-sm-4 mb-1 mt-4 mx-auto" style="width: 18rem;">
+        <div class="card-body">
+            <h4 class="card-title text-center fw-semibold">Kota Kasablanka</h4>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">..</li>
+                <li class="list-group-item">..</li>
+            </ul>
+        </div>
+        <div class="card-footer text-center">
+            <a href="https://goo.gl/maps/6Q4WZMG1viT1qXnb7" target="_blank">
+                <img src="{%static 'img/map.png'%}" width="50">
+            </a>  
+        </div>
+    </div>
+
+    <div class="card col-sm-4 mb-1 mt-4 mx-auto" style="width: 18rem;">
+        <div class="card-body">
+            <h4 class="card-title text-center fw-semibold">Margocity Depok</h4>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">..</li>
+                <li class="list-group-item">..</li>
+            </ul>
+        </div>
+        <div class="card-footer text-center">
+            <a href="https://maps.app.goo.gl/ZUFBcw91EUK848kc7?g_st=iw" target="_blank">
+                <img src="{%static 'img/map.png'%}" width="50">
+            </a>  
+        </div>
+    </div>
+
+    <div class="card col-sm-4 mb-1 mt-4 mx-auto" style="width: 18rem;">
+        <div class="card-body">
+            <h4 class="card-title text-center fw-semibold">Paris Van Java</h4>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">..</li>
+                <li class="list-group-item">..</li>
+            </ul>
+        </div>
+        <div class="card-footer text-center">
+            <a href="https://goo.gl/maps/p7YE7W8izKYMZwZd7" target="_blank">
+                <img src="{%static 'img/map.png'%}" width="50">
+            </a>  
+        </div>
+    </div>
+
+    <div class="card col-sm-4 mb-1 mt-4 mx-auto" style="width: 18rem;">
+        <div class="card-body">
+            <h4 class="card-title text-center fw-semibold">Plaza Indonesia</h4>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">..</li>
+                <li class="list-group-item">..</li>
+            </ul>
+        </div>
+        <div class="card-footer text-center">
+            <a href="https://maps.app.goo.gl/gpgqsCqQZKbNMUAb6?g_st=iw" target="_blank">
+                <img src="{%static 'img/map.png'%}" width="50">
+            </a>
+        </div>
+    </div>
+
+    <div class="card col-sm-4 mb-1 mt-4 mx-auto" style="width: 18rem;">
+        <div class="card-body">
+            <h4 class="card-title text-center fw-semibold">Senayan City</h4>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">..</li>
+                <li class="list-group-item">..</li>
+            </ul>
+        </div>
+        <div class="card-footer text-center">
+            <a href="https://goo.gl/maps/hivUhVnQDgfa7Mxg7" target="_blank">
+                <img src="{%static 'img/map.png'%}" width="50">
+            </a>  
+        </div>
+    </div>
+
+    <div class="card col-sm-4 mb-1 mt-4 mx-auto" style="width: 18rem;">
+        <div class="card-body">
+            <h4 class="card-title text-center fw-semibold">Summarecon Bekasi</h4>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">..</li>
+                <li class="list-group-item">..</li>
+            </ul>
+        </div>
+        <div class="card-footer text-center">
+            <a href="https://g.page/summareconmallbekasi?share" target="_blank">
+                <img src="{%static 'img/map.png'%}" width="50">
+            </a>  
+        </div>
+    </div>
+
+</div>
+
+<a class="btn btn-dark" href="{% url 'recycle:create_dropoff' %}" role="button">Drop Off</a>
+
+<a class="btn btn-dark" href="{% url 'recycle:create_pickup' %}" role="button">Pick Up</a>
 
 {% endblock content %}
