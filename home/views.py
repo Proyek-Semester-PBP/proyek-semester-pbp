@@ -9,10 +9,6 @@ from django.contrib.auth.decorators import login_required
 def show_homepage(request):
     return render(request, "home.html")
 
-@login_required(login_url='/home/login/')
-def show_home_loggedin(request):
-    return render(request, "home_loggedin.html")
-
 def login_user(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -20,7 +16,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            response = HttpResponseRedirect(reverse('home:show_home_loggedin'))
+            response = HttpResponseRedirect(reverse('home:show_homepage'))
             return response
 
     context = {}
