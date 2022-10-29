@@ -1,0 +1,156 @@
+[
+    {
+        "model": "shopping.recommendeditem",
+        "pk": 1,
+        "fields": {
+            "name": "Market Bag Billboard",
+            "image": "/static/shopping/items/market_bag_billboard_xsproject.jpg",
+            "price": 280000,
+            "description": "Produk ini terbuat dari kantong material billboard pilihan yang biasa Anda temui sehari-hari.\n\nUkuran\n33 x 31 x 20cm\n\nMaterial: Billboard",
+            "link": "https://www.tokopedia.com/navakara-waste-less/market-bag-billboard-produk-daur-ulang-xsproject"
+        }
+    },
+    {
+        "model": "shopping.recommendeditem",
+        "pk": 2,
+        "fields": {
+            "name": "Pot Gantung Botol Plastik",
+            "image": "/static/shopping/items/pot_gantung_botol_bintang.jpg",
+            "price": 15000,
+            "description": "Pot terbuat dari botol plastik ukuran 1,5 liter (1500 ml)\nWarna dan model random\njika request warna silahkan tulis d kolom catatan ketika ckeckout",
+            "link": "https://www.tokopedia.com/dian-shop99/prakarya-kerajinan-pot-gantung-daur-ulang-botol-plastik-bintang"
+        }
+    },
+    {
+        "model": "shopping.recommendeditem",
+        "pk": 3,
+        "fields": {
+            "name": "Tas Bungkus Kopi",
+            "image": "/static/shopping/items/tas_bungkus_kopi_xxy.jpg",
+            "price": 31000,
+            "description": "ukuran tas:\npanjang= 20 cm\nlebar= 5 cm\ntinggi= 16 cm\npanjang tali tas sekitar 42 cm",
+            "link": "https://www.tokopedia.com/xxyshop/kerajinan-tas-dari-bungkus-kopi-tas-daur-ulang-bungkus-kopi"
+        }
+    },
+    {
+        "model": "shopping.recommendeditem",
+        "pk": 4,
+        "fields": {
+            "name": "Keranjang Anyam Plastik Kemasan",
+            "image": "/static/shopping/items/keranjang_plastik_anyam_icera.jpg",
+            "price": 65000,
+            "description": "12 cm x 12 cm x 9 cm.\nHandle length / panjang gagang: 35 cm.",
+            "link": "https://www.tokopedia.com/icera/keranjang-kerajinan-plastik-anyam-daur-ulang-recycled-craft-basket"
+        }
+    },
+    {
+        "model": "shopping.recommendeditem",
+        "pk": 5,
+        "fields": {
+            "name": "Miniatur Bunga Botol Plastik",
+            "image": "/static/shopping/items/miniatur_bunga_botol_ferajelita.jpg",
+            "price": 108500,
+            "description": "Nama Produk :\nBunga Anggrek Daur Ulang\n\nInformasi Produk\n1. Bahan :\n- Terbuat dari botol sprite\n\n2. Fungsi :\n- hiasan rumah\n- koleksi\n\n3. Ukuran : Tinggi 35cm, diameter 8 cm",
+            "link": "https://www.tokopedia.com/ferajelita/miniatur-bunga-daur-ulang-pajangan-rumah-unik-kerajinan-daurulang"
+        }
+    },
+    {
+        "model": "shopping.recommendeditem",
+        "pk": 6,
+        "fields": {
+            "name": "Bingkai Plastik Kemasan",
+            "image": "/static/shopping/items/plastik_kemasan_bingkai_cicilok.jpg",
+            "price": 98000,
+            "description": "bingkai yang terbuat dari plastik kemasan sachet sangat cocok untuk hiasan dinding",
+            "link": "https://www.tokopedia.com/cicilok/daur-ulang-plastik-kemasan-bingkai-daur-ulang-plastik-kerajinan-daur"
+        }
+    },
+    {
+        "model": "shopping.recommendeditem",
+        "pk": 7,
+        "fields": {
+            "name": "Pencil Case Plastik Kemasan",
+            "image": "/static/shopping/items/tempat_pensil_plastik_butik.jpg",
+            "price": 23000,
+            "description": "Tempat pensil unik yang terbuat dari 95% sampah plastik kemasan yang mungkin kita hasilkan, cocok juga untuk kamu yang ingin berkontribusi mengurangi sampah plastik di lingkungan. Terdapat resleting dan handle pada bagian samping yang memudahkan kamu dalam membawanya. Awet, telah melewati tahap quality control, dan yang pasti sangat membantu menyelamatkan lingkungan dari sampah plastik kemasan. Limbah plastik sudah disterilkan sehingga aman digunakan. Spesifikasi: 22,5 x 11 x 8 cm | 90 gram",
+            "link": "https://www.blibli.com/p/tempat-pensil-daur-ulang-kotak-pencil-case-v2/is--BUD-70046-00020-00001"
+        }
+    },
+    {
+        "model": "shopping.recommendeditem",
+        "pk": 8,
+        "fields": {
+            "name": "Tempat Pensil Kertas Koran",
+            "image": "/static/shopping/items/tempat_pensil_jpsm_butik.jpg",
+            "price": 20000,
+            "description": "Tempat pensil unik hasil karya dan kerjasama dengan jejaring pengelola sampah mandiri (JPSM). Terbuat dari kertas koran dan komik bekas. Bentuknya yang estetik siap menyimpan alat tulismu dan menghiasi meja belajarmu. Selain mendapatkan produk yang kamu inginkan, kamu juga turut mengurangi sampah di lingkungan loh.\n\nDiameter : 6,5 cm\nTinggi : 10 cm\n\nAyo, bersama kurangi sampah. Indonesia bebas sampah. Salam lestari and happy shopping!!",
+            "link": "https://www.blibli.com/p/tempat-pensil-daur-ulang-jpsm/ps--BUD-70046-00089"
+        }
+    },
+    {
+        "model": "shopping.recommendeditem",
+        "pk": 9,
+        "fields": {
+            "name": "Laptop Sleeve Patchwork Sashiko",
+            "image": "/static/shopping/items/laptop_sleeve_sashiko_meena.jpg",
+            "price": 365000,
+            "description": "Jangan Ragu Untuk Bertanya Kepada kami tentang Produk Yang akan Kamu Pesan.\n\nJIka ada barang lain yang kamu Butuhkan silahkan tanyakan saja pada kami.\n\nkarena tidak semua produk kami Upload karena keterbatasan Di tinggi 40 cm x lebar 30 cm\n\nbisa digunakan sampai laptop 15 inc\n\nbusa lapis 5mm\n\nlapisan dalam anti air\n\nlabel kulit\n\nkancing anti karat ykk",
+            "link": "https://www.blibli.com/p/laptop-sleeve-controlnew-daur-ulang-patchwork-sashiko/ps--MES-70112-12347"
+        }
+    },
+    {
+        "model": "shopping.recommendeditem",
+        "pk": 10,
+        "fields": {
+            "name": "Tote Bag Plastik Kemasan",
+            "image": "/static/shopping/items/totebag_trendy_happy_butik.jpg",
+            "price": 70000,
+            "description": "Sampah plastik kemasan yang disulap menjadi totebag cantik dengan ukuran yang cukup besar. Dilengkapi dengan satu kantung di bagian dalam dengan tambahan single rit sebagai tempat kamu menyimpan barangmu dengan aman. Selain itu, handle totebag ini terbuat dari webbing hitam yang menambah kesan elegan. Dibagian dalam tas juga dilapisi dengan kain. Tas ini memiliki 2 ukuran dengan spesifikasi :\nBesar : 41 x 47 x 17 cm | 300\nKecil : 36 x 39,5 x 14 cm | 200 gr\n\nNotes :\n- plastik kemasan yang digunakan variatif (tidak selalu sama dengan yang tertera di gambar)\n- untuk menanyakan kemasan yang tersedia, silahkan hubungi melalui chat dengan seller\n- terdapat sedikit perbedaan warna dikarenakan faktor pencahayaan\n\nDengan membeli produk ini, kamu juga bisa ikut berpartisipasi dalam mengurangi sampah plastik yang berakhir di TPA loh. Ayo bantu selamatkan bumi kita and happy shopping!",
+            "link": "https://www.blibli.com/p/tas-totebag-daur-ulang-trendy-tote-bag/ps--BUD-70046-00070"
+        }
+    },
+    {
+        "model": "shopping.recommendeditem",
+        "pk": 11,
+        "fields": {
+            "name": "Toples Kertas Bekas",
+            "image": "/static/shopping/items/toples_kertas_jpsm_butik.jpg",
+            "price": 45000,
+            "description": "Toples permen daur ulang kertas karya dan kerjasama dengan jejaring pengelola sampah mandiri (JPSM). Tople dengan desain unik dan keren ini siap mempercantik ruang tamu kamu dengan desainnya yang estetik. Dapat digunakan untuk menyimpan permen atau yang lainnya.\n\nSpesifikasi : diameter 9 cm dan tinggi 18 cm | 183 gr\n\nAyo, bersama kurangi sampah. Indonesia bebas sampah. Salam lestari and happy shopping!!",
+            "link": "https://www.blibli.com/p/toples-kertas-daur-ulang-kado-unik-jpsm/ps--BUD-70046-00087"
+        }
+    },
+    {
+        "model": "shopping.recommendeditem",
+        "pk": 12,
+        "fields": {
+            "name": "Miniatur Scorpio Rantai Bekas",
+            "image": "/static/shopping/items/scorpio_rantai_jpsm_butik.jpg",
+            "price": 120000,
+            "description": "Miniatur unik dari rantai bekas ini hasil karya dan kerjasama dengan jejaring pengelola sampah mandiri (JPSM). karya unik ini cocok untuk melengkapi koleksi miniaturmu. Selain mendapatkan produk yang kamu inginkan ini, kamu juga turut berkontribusi mengurangi sampah di lingkungan loh.\n\nAyo, bersama kurangi sampah. Indonesia bebas sampah. Salam lestari and happy shopping!!",
+            "link": "https://www.blibli.com/p/miniatur-scorpio-daur-ulang-rantai-bekas-jpsm/ps--BUD-70046-00090"
+        }
+    },
+    {
+        "model": "shopping.recommendeditem",
+        "pk": 13,
+        "fields": {
+            "name": "Sajadah Plastik Bekas",
+            "image": "/static/shopping/items/sajadah_plastik_sholat_rafa.jpg",
+            "price": 55000,
+            "description": "Nama Produk :\nSajadah Daur Ulang\nKode Produk :\nSajadah01\n\nInformasi Produk\n1. Bahan :\n- Terbuat dari daur ulang Plastik Bekas\n- Tebal dan awet\n- jahit rapi\n- Unik\n\n2. Fungsi :\n- Karya Sanitasi\n- koleksi\n\n3. Ukuran : P x L (80cm x 45cm)\n\n4. Cocok untuk kegiatan sehari - hari, Souvernir, kegiatan kemasyarakatan, dll",
+            "link": "https://shopee.co.id/kerajinan-sajadah-daur-ulang-plastik-bekas-alas-sholat-peralatan-sholat-i.18975584.5624225326"
+        }
+    },
+    {
+        "model": "shopping.recommendeditem",
+        "pk": 14,
+        "fields": {
+            "name": "Pot Karakter Botol Plastik",
+            "image": "/static/shopping/items/pot_karakter_botol_dian.jpg",
+            "price": 16000,
+            "description": "♻️ terbuat dari botol bekas plastik ukuran 1,5 liter\n\n♻️ botol plastik bekas random (bisa aqua, cola/fanta, le minerale dll)\n\n‼️ jika terdaoat sedikit riject seperti penyok sedikit... NO KOMPLAIN yaaa namanya juga botol bekas ya kaaa 😁😁✌️\n\n♻️packing akan dibuat seaman mungkin standart paket ya ka",
+            "link": "https://shopee.co.id/Pot-Vas-Bunga-Karakter-Daur-Ulang-Botol-Plastik-Bekas-Kerajinan-Tangan-i.8415800.14992198699"
+        }
+    }
+]

@@ -4,14 +4,151 @@
 
 <head>
     <title>Shop</title>
+    <style>
+        .card-size-adjust {
+            width: 30%;
+        }
+
+        .item-img-card{
+            width: 572px;
+            height: 286px;
+            object-fit: contain;        
+        }
+
+        .item-img-modal{
+            width: 982px;
+            height: 491px;
+            object-fit: contain;
+            border: 5px solid green;
+            border-radius: 2%;
+            padding: 10px;
+        }
+
+        .vendor-img{
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            border: 3px solid lightgray;
+            border-radius: 50%;
+            
+        }
+
+        @media (max-width: 959px) {
+            .card-size-adjust {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 639px) {
+            .card-size-adjust {
+                width: auto;
+                min-width: 45%;
+            }
+        }
+
+        @media (max-width: 280px) {
+            .vendor-img{
+                width: 150px;
+                height: 150px;
+            }
+        } 
+    </style>
+    <script>
+        async function refreshItems() {
+            const tasks = await fetch("{% url 'shopping:show_item_json' %}").then((response) => response.json());
+            
+            let htmlItems = '';
+            tasks.forEach((item) => {
+
+                htmlItems += `<div class="card mx-3 my-3 card-size-adjust">
+                                <div class="card-body">
+                                    <img class="item-img-card img-fluid" src="${item.fields.image}">
+                                </div>
+                                <div class="card-footer text-center">
+                                    <h5 class="card-title">${item.fields.name}</h5>
+                                </div>
+                                <a role="button" data-bs-toggle="modal" data-bs-target="#item${item.pk}" class="stretched-link"></a>
+                            </div>`;
+
+                htmlItems += `<div class="modal fade" id="item${item.pk}" tabindex="-1" aria-labelledby="itemLabel${item.pk}" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-success">
+                                            <h1 class="modal-title fs-5 text-white" id="itemLabel${item.pk}">${item.fields.name}</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body text-center">
+                                            <img class="item-img-modal img-fluid" src="${item.fields.image}">
+                                            <h2 class="modal-title mt-2 mb-1">Rp${item.fields.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ".")}</h2>
+                                        </div>
+                                        <div class="flex modal-body border-top" style="white-space: pre-wrap;"><p class="modal-text">${item.fields.description}</p></div>
+                                        <div class="modal-footer bg-success justify-content-center" style="position: relative;">
+                                            <h5 class="modal-title text-white">Go to Store Page</h5>
+                                            <a role="button" class="stretched-link" href="${item.fields.link}"></a>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>`
+            });
+            document.getElementById("items").innerHTML = htmlItems
+        }
+
+        async function refreshVendors() {
+            const tasks = await fetch("{% url 'shopping:show_vendor_json' %}").then((response) => response.json());
+            
+            let htmlCards = '';
+            tasks.forEach((vendor) => {
+
+                htmlCards += `<div class="card mx-3 my-3 card-size-adjust">
+                                <div class="card-header text-center">
+                                    <img class="vendor-img my-3" src="${vendor.fields.image}">
+                                    <h5 class="card-title mt-2 mb-3">${vendor.fields.name}</h5>
+                                </div>
+                                <div class="card-body text-center">
+                                    <p class="card-text">${vendor.fields.description}</p>
+                                </div>
+                                <a role="button" class="stretched-link" href="${vendor.fields.link}"></a>
+                            </div>`;
+            });
+            document.getElementById("vendors").innerHTML = htmlCards
+        }
+    </script>
 </head>
 
 {% endblock meta %}
 
 {% block content %}
 
-<body>
-    This is the shopping page.
+<body onload="refreshItems();refreshVendors();">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
+        <a class="navbar-brand" href="#">PlasTIX</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavPlastix" aria-controls="navbarNavPlastix" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavPlastix">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="{% url 'profilepage:show_profile' %}">Profile</a>
+                <a class="nav-item nav-link" href="{% url 'redeem:show_redeem' %}">Redeem</a>
+                <a class="nav-item nav-link" href="{% url 'recycle:show_recycle' %}">Recycle</a>
+                <a class="nav-item nav-link active" href="{% url 'shopping:show_shop' %}">Shopping</a>
+                <a class="nav-item nav-link" href="{% url 'news:show_news' %}">News</a>
+            </div>
+        </div>
+    </nav>
+
+    <h1 class="my-2" style="text-align: center;">This is the shopping page.</h1>
+    
+    <div class="text-center">
+        <h2 class="mt-4 mb-2" style="text-align: center;">Check out these recommendations!</h2>
+        <button class="btn btn-success" onclick="refreshItems()">⟳ Refresh</button>
+    </div>
+    <div id="items" class="d-flex justify-content-center mt-4 mb-5" style="flex-wrap: wrap; "></div>
+
+    <div class="text-center">
+        <h2 class="mt-4 mb-2" style="text-align: center;">Check out these vendors!</h2>
+        <button class="btn btn-success" onclick="refreshVendors()">⟳ Refresh</button>
+    </div>
+    <div id="vendors" class="d-flex justify-content-center mt-4 mb-5" style="flex-wrap: wrap; "></div>
 </body>
 
 {% endblock content %}

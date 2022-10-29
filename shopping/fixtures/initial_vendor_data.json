@@ -1,0 +1,152 @@
+[
+    {
+        "model": "shopping.recommendedvendor",
+        "pk": 1,
+        "fields": {
+            "name": "1environ",
+            "image": "/static/shopping/vendors/1environ.jpg",
+            "description": "Helping to save the planet, one pencil at a time! ❤️🌲❤️",
+            "link": "https://www.etsy.com/shop/1environ"
+        }
+    },
+    {
+        "model": "shopping.recommendedvendor",
+        "pk": 2,
+        "fields": {
+            "name": "DobaStudioUK",
+            "image": "/static/shopping/vendors/dobastudio.jpg",
+            "description": "DOBA - Local Plastic Recycling into beautiful products!",
+            "link": "https://www.etsy.com/shop/DobaStudioUK"
+        }
+    },
+    {
+        "model": "shopping.recommendedvendor",
+        "pk": 3,
+        "fields": {
+            "name": "ZeroPlasticAUS",
+            "image": "/static/shopping/vendors/zeroplastic.jpg",
+            "description": "ZERO products save the lives of countless sea animals and future generations who will call this planet home.",
+            "link": "https://www.etsy.com/shop/ZeroPlasticAUS"
+        }
+    },
+    {
+        "model": "shopping.recommendedvendor",
+        "pk": 4,
+        "fields": {
+            "name": "ModernVintageGiftCo",
+            "image": "/static/shopping/vendors/mvgco.jpg",
+            "description": "Unique, Recycled, Ethically Traded Gifts",
+            "link": "https://www.etsy.com/shop/ModernVintageGiftCo"
+        }
+    },
+    {
+        "model": "shopping.recommendedvendor",
+        "pk": 5,
+        "fields": {
+            "name": "BrothersMake",
+            "image": "/static/shopping/vendors/brothersmake.jpg",
+            "description": "Brothers Make - 100% Recycled Plastic Items",
+            "link": "https://www.etsy.com/shop/BrothersMakeStore"
+        }
+    },
+    {
+        "model": "shopping.recommendedvendor",
+        "pk": 6,
+        "fields": {
+            "name": "Waste Less by NAvakara",
+            "image": "/static/shopping/vendors/wasteless.jpg",
+            "description": "Waste Less memberi Anda berbagai ide dalam usaha pengurangan limbah!",
+            "link": "https://www.tokopedia.com/navakara-waste-less"
+        }
+    },
+    {
+        "model": "shopping.recommendedvendor",
+        "pk": 7,
+        "fields": {
+            "name": "Plastik Indonesia",
+            "image": "/static/shopping/vendors/plastikindo.jpg",
+            "description": "Plastik Indonesia menjual kantong plastik hasil daur ulang sampah plastik.",
+            "link": "https://www.tokopedia.com/plastikkuindo"
+        }
+    },
+    {
+        "model": "shopping.recommendedvendor",
+        "pk": 8,
+        "fields": {
+            "name": "Dita Recycled Paper and Box",
+            "image": "/static/shopping/vendors/ditarecycled.jpg",
+            "description": "Kertas daur ulang dan box costum untuk kebutuhan anda!",
+            "link": "https://www.tokopedia.com/ditarecycledpaperandbox"
+        }
+    },
+    {
+        "model": "shopping.recommendedvendor",
+        "pk": 9,
+        "fields": {
+            "name": "Kind by Kami",
+            "image": "/static/shopping/vendors/kindbykami.jpg",
+            "description": "Empowering & Connecting local artisan to customer. Slowly moving towards sustainable and eco-conscious living.",
+            "link": "https://www.tokopedia.com/kindbykami"
+        }
+    },
+    {
+        "model": "shopping.recommendedvendor",
+        "pk": 10,
+        "fields": {
+            "name": "STARTIC",
+            "image": "/static/shopping/vendors/startic.jpg",
+            "description": "Let's be artistic outside, ethical inside",
+            "link": "https://www.tokopedia.com/heystartic"
+        }
+    },
+    {
+        "model": "shopping.recommendedvendor",
+        "pk": 11,
+        "fields": {
+            "name": "Tri Upcycle",
+            "image": "/static/shopping/vendors/triupcycle.jpg",
+            "description": "30% profit penjualan disumbangkan untuk melindungi hutan kita yang sangat berharga di Indonesia.",
+            "link": "https://www.tokopedia.com/triupcycle"
+        }
+    },
+    {
+        "model": "shopping.recommendedvendor",
+        "pk": 12,
+        "fields": {
+            "name": "Askarabumi",
+            "image": "/static/shopping/vendors/askarabumi.jpg",
+            "description": "Setiap lembar kertas Askarabumi memiliki struktur kertas yang unik, dibuat di workshop kecil kami di Bali.",
+            "link": "https://www.tokopedia.com/askarabumi"
+        }
+    },
+    {
+        "model": "shopping.recommendedvendor",
+        "pk": 13,
+        "fields": {
+            "name": "WIJI GALLERY",
+            "image": "/static/shopping/vendors/wijigallery.jpg",
+            "description": "Produsen kerajinan daur ulang berbahan dasar gelas plastik bekas yang dibuat secara handmade (buatan tangan).",
+            "link": "https://shopee.co.id/wijigallery"
+        }
+    },
+    {
+        "model": "shopping.recommendedvendor",
+        "pk": 14,
+        "fields": {
+            "name": "Butik Daur Ulang",
+            "image": "/static/shopping/vendors/butikdaurulang.jpg",
+            "description": "Butik daur ulang pertama di Yogyakarta dengan kualitas produk terjamin.",
+            "link": "https://shopee.co.id/butikdaurulang_1"
+        }
+    },
+    {
+        "model": "shopping.recommendedvendor",
+        "pk": 15,
+        "fields": {
+            "name": "Rumah Kreasi Daur Ulang",
+            "image": "/static/shopping/vendors/rumahkreasi.jpg",
+            "description": "Menjual produk kerajinan tangan, kreasi daur ulang, dan produk UMKM lainnya.",
+            "link": "https://shopee.co.id/mona_kabiyansa"
+        }
+    }
+]
