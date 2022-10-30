@@ -19,7 +19,6 @@
               dataType: "json",
               data: {
                 csrfmiddlewaretoken: '{{ csrf_token }}',
-                id: $(this).data('id'),
                 name: $('#name_input').val(),
                 email: $('#email_input').val(),
                 mobile: $('#mobile_input').val(),
@@ -29,7 +28,7 @@
                 facebook: $('#facebook_input').val(),
               }
             });
-            document.location.reload(true);
+            // document.location.reload(true);
           });
         });        
         </script>
@@ -252,7 +251,7 @@
                     <div class="card-body">
                       <p class="mb-4" id = "title">Points
                       </p>
-                      <h4 class="card-title">346</h4>     
+                      <h4 class="card-title">{{point}}</h4>     
                     </div>
                   </div>
                 </div>
@@ -261,7 +260,7 @@
                     <div class="card-body">
                       <p class="mb-4" id = "title">Plastic Donated
                       </p>
-                      <h4 class="card-title">26</h4>
+                      <h4 class="card-title">{{plastic}}</h4>
                       </div>
                     </div>
                   </div>
