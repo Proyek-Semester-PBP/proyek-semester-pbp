@@ -35,6 +35,7 @@ def show_json(request):
 
 def add_history(request):
     if request.method == 'POST':
+        name = request.POST.get('name')
         weight = request.POST.get('weight')
         description = request.POST.get('description')
         if (request.POST.get('type') == "pickup"):
@@ -46,6 +47,7 @@ def add_history(request):
             is_pickup = False
         new_history = RecycleHistory(
             user=request.user,
+            name=name,
             weight=int(weight),
             point=int(weight)*5,
             location=location,

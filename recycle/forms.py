@@ -1,4 +1,5 @@
 from django import forms
+from recycle.models import RecycleHistory
 
 dropoff_choices = [
     ('AEON Serpong', 'AEON Serpong'),
@@ -11,21 +12,27 @@ dropoff_choices = [
     ('Summarecon Bekasi', 'Summarecon Bekasi')
 ]
 
-class DropOffForm(forms.Form):
-    name = forms.CharField(label="Name", 
-                            widget=forms.TextInput(attrs={'placeholder': 'Enter your name'}))
-    weight = forms.IntegerField(label="Weight",
-                                widget=forms.NumberInput(attrs={'placeholder': 'Enter the plastic weight'}))
-    location = forms.CharField(label='Location',
-                                widget=forms.RadioSelect(choices=dropoff_choices))
-    description = forms.CharField(label="Description", required=False,
-                                    widget=forms.Textarea(attrs={'placeholder': 'Tell us your experience with PlasTIX'}))
-
-class PickUpForm(forms.Form):
-    name = forms.CharField(label="Name", 
-                            widget=forms.TextInput(attrs={'placeholder': 'Full Name'}))
-    weight = forms.IntegerField(label="Weight", 
-                                widget=forms.NumberInput(attrs={'placeholder': 'Plastic weight in gram'}))
+class DropOffForm(forms.ModelForm):
+    class Meta:
+        model = RecycleHistory
+        fields = ('name', 'weight', 'location', 'description') 
+        widgets = {
+            'name': forms.TextInput(attrs={'placeholder': 'Enter your name'}),
+            'weight': forms.NumberInput(attrs={'placeholder': 'Enter the plastic weight'}),
+            'location': forms.RadioSelect(choices=dropoff_choices),
+            'description': forms.Textarea(attrs={'placeholder': 'Tell us your experience with PlasTIX'})
+        }
+    
+class PickUpForm(forms.ModelForm):
+    class Meta:
+        model = RecycleHistory
+        fields = ('name', 'weight', 'description')
+        widgets = {
+            'name': forms.TextInput(attrs={'placeholder': 'Enter your name'}),
+            'weight': forms.NumberInput(attrs={'placeholder': 'Enter the plastic weight'}),
+            'description': forms.Textarea(attrs={'placeholder': 'Tell us your experience with PlasTIX'})
+        }
+    
     region = forms.CharField(label="Region", 
                             widget=forms.TextInput(attrs={'placeholder': 'Jawa Barat'}))
     city = forms.CharField(label="City", 
@@ -36,5 +43,4 @@ class PickUpForm(forms.Form):
                                 widget=forms.NumberInput(attrs={'placeholder': '12345'}))
     address_detail = forms.CharField(label="Details",
                                     widget=forms.TextInput(attrs={'placeholder': 'Street Name, Building Number'}))
-    description = forms.CharField(label="Description", required=False,
-                                widget=forms.Textarea(attrs={'placeholder': 'Tell us your experience with PlasTIX'}))
+   
