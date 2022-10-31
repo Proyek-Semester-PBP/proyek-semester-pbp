@@ -51,6 +51,6 @@ def NewProfile(user):
     try:
         temp = Profile.objects.get(user = user) 
     except Profile.DoesNotExist:
-        return Profile.objects.create(user=user, name="-", email="-", mobile="-", github="-", instagram="-", twitter="-", facebook="-" )
+        return Profile.objects.create(user=user, name="-", email="-", mobile="-", github="-", instagram="-", twitter="-", facebook="-", point = 0, plastics = 0 )
         
     

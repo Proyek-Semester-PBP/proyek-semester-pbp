@@ -21,6 +21,7 @@ def show_profile(request):
         facebook = request.POST.get("facebook")
         Profile.objects.filter(user = user).update(name = name, email = email, mobile = mobile, github = github, instagram = instagram, twitter = twitter, facebook = facebook)
     
+    
     data_user1 = Profile.objects.get(user = user)
     context = {
         'user': user,
