@@ -1,0 +1,26 @@
+[
+    {
+        "model": "news.newsdata",
+        "pk": 1,
+        "fields": {
+            "title": "Fight Club",
+            "date": "11 November 1999"
+        }
+    },
+    {
+        "model": "news.newsdata",
+        "pk": 2,
+        "fields": {
+            "title": "Fight Club",
+            "date": "11 November 1999"
+        }
+    },
+    {
+        "model": "news.newsdata",
+        "pk": 3,
+        "fields": {
+            "title": "Fight Club",
+            "date": "11 November 1999"
+        }
+    }
+]
