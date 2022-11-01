@@ -1,3 +1,4 @@
+from distutils.command.upload import upload
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User 
@@ -13,4 +14,5 @@ class Profile(models.Model):
     twitter = models.CharField(max_length = 100, default = 0, null=True)
     facebook = models.CharField(max_length = 100, default = 0, null=True)
     point = models.BigIntegerField(default = 0)
-    plastics = models.BigIntegerField(default=0)
+    weight = models.BigIntegerField(default=0)
+    profpic = models.ImageField(null = True, upload_to = 'pics/', blank = True)
