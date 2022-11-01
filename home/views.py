@@ -6,6 +6,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .models import User
 from profilepage.models import Profile
+from .forms import CustomUserCreationForm  
+from django.contrib import messages
 
 # Create your views here.
 def show_homepage(request):
@@ -26,21 +28,23 @@ def login_user(request):
             NewProfile(user)
             response = HttpResponseRedirect(reverse('home:show_home_loggedin'))
             return response
+        else:
+            messages.info(request, 'Username or Password is incorrect!')
 
     context = {}
     return render(request, 'login.html', context)
 
 def register(request):
-    form = UserCreationForm()
-
-    if request.method == "POST":
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
+    form = CustomUserCreationForm()
+    if request.method == 'POST':  
+        form = CustomUserCreationForm(request.POST)  
+        if form.is_valid():  
             form.save()
+            messages.success(request, 'Successfully created an Account!')
             return redirect('home:login_user')
-    
-    context = {'form':form}
-    return render(request, 'register.html', context)
+        
+    context = {'form':form }
+    return render(request, 'register.html', context)  
 
 def logout_user(request):
     logout(request)
