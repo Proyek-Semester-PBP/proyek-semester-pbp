@@ -30,12 +30,34 @@
             object-fit: contain;
             border: 3px solid lightgray;
             border-radius: 50%;
-            
+        }
+
+        .bookmark-img{
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            border: 2px solid green;
+            border-radius: 2%;
+            margin: 8px;
+        }
+
+        @media (max-width: 991px) {
+            .bookmark-img{
+                width: 100px;
+                height: 100px;
+                margin: 17px;
+            }
         }
 
         @media (max-width: 959px) {
             .card-size-adjust {
                 width: 45%;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .bookmark-img{
+                display: none;
             }
         }
 
@@ -55,10 +77,11 @@
     </style>
     <script>
         async function refreshItems() {
-            const tasks = await fetch("{% url 'shopping:show_item_json' %}").then((response) => response.json());
+            const items = await fetch("{% url 'shopping:show_item_json' %}").then((response) => response.json());
+            const bookmarks = await fetch("{% url 'shopping:show_bookmark_json' %}").then((response) => response.json());
             
             let htmlItems = '';
-            tasks.forEach((item) => {
+            items.forEach((item) => {
 
                 htmlItems += `<div class="card mx-3 my-3 card-size-adjust">
                                 <div class="card-body">
@@ -82,9 +105,11 @@
                                             <h2 class="modal-title mt-2 mb-1">Rp${item.fields.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ".")}</h2>
                                         </div>
                                         <div class="flex modal-body border-top" style="white-space: pre-wrap;"><p class="modal-text">${item.fields.description}</p></div>
-                                        <div class="modal-footer bg-success justify-content-center" style="position: relative;">
-                                            <h5 class="modal-title text-white">Go to Store Page</h5>
-                                            <a role="button" class="stretched-link" href="${item.fields.link}"></a>
+                                        <div class="modal-footer justify-content-center">
+                                            {% if user.is_authenticated %}
+                                                <button type="button" class="btn btn-secondary" onclick="bookmarkItem(${item.pk})">📑 Bookmark item</button>
+                                            {% endif %}
+                                            <a role="button" class="btn btn-success" href="${item.fields.link}">🏬 Go to Store Page</a>
                                         </div> 
                                     </div>
                                 </div>
@@ -94,12 +119,12 @@
         }
 
         async function refreshVendors() {
-            const tasks = await fetch("{% url 'shopping:show_vendor_json' %}").then((response) => response.json());
+            const vendors = await fetch("{% url 'shopping:show_vendor_json' %}").then((response) => response.json());
             
-            let htmlCards = '';
-            tasks.forEach((vendor) => {
+            let htmlVendors = '';
+            vendors.forEach((vendor) => {
 
-                htmlCards += `<div class="card mx-3 my-3 card-size-adjust">
+                htmlVendors += `<div class="card mx-3 my-3 card-size-adjust">
                                 <div class="card-header text-center">
                                     <img class="vendor-img my-3" src="${vendor.fields.image}">
                                     <h5 class="card-title mt-2 mb-3">${vendor.fields.name}</h5>
@@ -110,8 +135,49 @@
                                 <a role="button" class="stretched-link" href="${vendor.fields.link}"></a>
                             </div>`;
             });
-            document.getElementById("vendors").innerHTML = htmlCards
+            document.getElementById("vendors").innerHTML = htmlVendors
         }
+
+        async function refreshBookmarks() {
+            const bookmarks = await fetch("{% url 'shopping:show_bookmark_json' %}").then((response) => response.json());
+            let htmlBookmarks = '';
+            if (bookmarks.length == 0) {
+                htmlBookmarks += `<h5 style="text-align: center; color: lightgray;">You currently have no bookmarks.</h5>`;
+            } else {
+                bookmarks.forEach((bookmark) => {
+                    
+                    htmlBookmarks += `<div class="card mb-3">
+                                        <div class="row no-gutters">
+                                            <div class="col-md-3">
+                                                <img src="${bookmark.fields.image}" class="bookmark-img">
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">${bookmark.fields.name}</h5>
+                                                    <p class="card-text">${bookmark.fields.description.slice(0,128)}…</p>
+                                                    <button type="button" class="btn btn-danger" onclick="removeBookmark(${bookmark.pk})">🗑 Remove</button>
+                                                    <a role="button" class="btn btn-success" href="${bookmark.fields.link}">🏬 Go to Store Page</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>`;
+                });
+            }
+            document.getElementById("bookmarks").innerHTML = htmlBookmarks
+        }
+
+        function bookmarkItem(id) {
+            fetch(`/shopping/bookmark/${id}`, {method: "POST", headers: {"X-CSRFToken": "{{csrf_token}}" }}).then(refreshBookmarks);
+            alert("Item has been bookmarked!")
+            return false;
+        }
+
+        function removeBookmark(id) {
+            fetch(`/shopping/remove-bookmark/${id}`, {method: "DELETE", headers: {"X-CSRFToken": "{{csrf_token}}" }}).then(refreshBookmarks);
+            alert("Bookmark has been removed!")
+            return false;
+        }
+
     </script>
 </head>
 
@@ -121,7 +187,7 @@
 
 <body onload="refreshItems();refreshVendors();">
     <nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
-        <a class="navbar-brand" href="#">PlasTIX</a>
+        <a class="navbar-brand" href="{% url 'home:show_homepage' %}">PlasTIX</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavPlastix" aria-controls="navbarNavPlastix" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -136,6 +202,8 @@
         </div>
     </nav>
 
+
+
     <h1 class="my-2" style="text-align: center;">This is the shopping page.</h1>
     
     <div class="text-center">
@@ -149,6 +217,24 @@
         <button class="btn btn-success" onclick="refreshVendors()">⟳ Refresh</button>
     </div>
     <div id="vendors" class="d-flex justify-content-center mt-4 mb-5" style="flex-wrap: wrap; "></div>
+
+
+
+    {% if user.is_authenticated %}
+        <button class="btn btn-success my-2 mx-2" data-bs-toggle="modal" data-bs-target="#bookmarksModal" onclick="refreshBookmarks()">≡ Bookmarks</button>
+
+        <div class="modal fade" id="bookmarksModal" tabindex="-1" aria-labelledby="bookmarksModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-success">
+                        <h1 class="modal-title fs-5 text-white" id="bookmarksModalLabel">Bookmarks</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div id="bookmarks" class="modal-body justify-content-center"></div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 </body>
 
 {% endblock content %}
