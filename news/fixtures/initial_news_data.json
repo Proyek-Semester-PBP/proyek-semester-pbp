@@ -3,24 +3,56 @@
         "model": "news.newsdata",
         "pk": 1,
         "fields": {
-            "title": "Fight Club",
-            "date": "11 November 1999"
+            "title": "Kementerian ESDM Dan IRENA Luncurkan Indonesia Energy Transition Outlook",
+            "date": "21 Oktober 2022"
         }
     },
     {
         "model": "news.newsdata",
         "pk": 2,
         "fields": {
-            "title": "Fight Club",
-            "date": "11 November 1999"
+            "title": "Usaha Daur Ulang Sampah Plastik Kemasan Kosmetik Jadi Perabot Fungsional",
+            "date": " 27 Oktober 2022 "
         }
     },
     {
         "model": "news.newsdata",
         "pk": 3,
         "fields": {
-            "title": "Fight Club",
-            "date": "11 November 1999"
+            "title": "Program Recycle Me Coca-Cola, Ubah Sampah Plastik Jadi Cuan",
+            "date": "27 Oktober 2022"
+        }
+    },
+    {
+        "model": "news.newsdata",
+        "pk": 4,
+        "fields": {
+            "title": "Bijak Menggunakan Plastik: Langkah Kecil Selamatkan Bumi",
+            "date": "23 Agustus 2022"
+        }
+    },
+    {
+        "model": "news.newsdata",
+        "pk": 5,
+        "fields": {
+            "title": "Biodegradable, Solusi Atasi Permasalahan Sampah Plastik",
+            "date": "24 Oktober 2022"
+        }
+    },
+    {
+        "model": "news.newsdata",
+        "pk": 6,
+        "fields": {
+            "title": "380 Juta Ton Plastik Dibuat Setiap Tahun, Tidak Ada Yang Benar-Benar Didaur Ulang",
+            "date": "25 Oktober 2022"
+        }
+    },
+    {
+        "model": "news.newsdata",
+        "pk": 7,
+        "fields": {
+            "title": "2025, Indonesia Targetkan Sampah Plastik Laut Berkurang 70 Persen",
+            "date": "27 Oktober 2022"
         }
     }
 ]
