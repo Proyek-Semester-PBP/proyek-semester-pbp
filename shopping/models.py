@@ -10,8 +10,14 @@ class RecommendedItem(models.Model):
     link = models.URLField()
     bookmarks = models.ManyToManyField(settings.AUTH_USER_MODEL)
 
+    def __str__(self):
+        return self.name
+
 class RecommendedVendor(models.Model):
     name = models.CharField(max_length=150)
     image = models.CharField(max_length=255, default="/static/shopping/vendors/placeholder_vendor.jpg")
     description = models.TextField()
     link = models.URLField()
+
+    def __str__(self):
+        return self.name

@@ -78,7 +78,6 @@
     <script>
         async function refreshItems() {
             const items = await fetch("{% url 'shopping:show_item_json' %}").then((response) => response.json());
-            const bookmarks = await fetch("{% url 'shopping:show_bookmark_json' %}").then((response) => response.json());
             
             let htmlItems = '';
             items.forEach((item) => {

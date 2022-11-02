@@ -16,10 +16,12 @@ def show_vendor_json(request):
     vendorData = RecommendedVendor.objects.order_by('?')[:3]
     return HttpResponse(serializers.serialize("json", vendorData), content_type="application/json")
 
+@login_required(login_url='/login/')
 def show_bookmark_json(request):
     bookmarkData = RecommendedItem.objects.filter(bookmarks=request.user)
     return HttpResponse(serializers.serialize("json", bookmarkData), content_type="application/json")
 
+@login_required(login_url='/login/')
 def bookmark_item(request, id):
     if request.method == 'POST':
         bookmarkedItem = RecommendedItem.objects.filter(pk=id).get()
@@ -29,6 +31,7 @@ def bookmark_item(request, id):
 
     return HttpResponseNotFound()
 
+@login_required(login_url='/login/')
 def remove_bookmark(request, id):
     if request.method == 'DELETE':
         bookmarkedItem = RecommendedItem.objects.filter(pk=id).get()
