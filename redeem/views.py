@@ -28,4 +28,3 @@ def request_voucher(request):
 
     return HttpResponse(status=200)
 
-

@@ -144,7 +144,7 @@
             <div class="col-lg-12" style="color: #014923;">
                 <h1> Let us know!</h1>
                 <h5> Apakah kamu tidak menemukan voucher favoritmu? Maukah kamu memberitahu kami?.</h5>
-                <button  class="btn btn-success"><a data-toggle="modal" data-target="#letModal">Beri tahu kami!</a></button>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#letModal">Beri tahu kami!</button>
 
             </div>
         </div>
@@ -194,30 +194,34 @@
     </div>
     
     </div>
-    <form action="" method="POST" id="modalsat">  
-        {% csrf_token %}  
-        <table>  
-            <div class="modal fade" id="letModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="ModalLabel">Let us know</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <input class="form-control" type="text" placeholder="merchant favoritemu" name="title"  aria-label="voucher favorit:" >
-                        <br>
-                        <input class="form-control" type="text"  name="description" placeholder="Description" aria-label="Description">
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" id="createBtn">Send message</button>
-                    </div>
-                  </div>
+    <div class="modal" id="letModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content" style="width:500px">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Let us know</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="reset_element()"></button>
+            </div>
+            <div class="modal-body">
+              <form method="POST" action="" id="new_voucher">
+                {% csrf_token %}
+                <div style="text-align: start;">
+                    <label for="exampleFormControlInput1">Merchant favoritmu</label>
+                    <input type="text" name="title" class="form-control" id="title" placeholder="Merchant favorit" required>
                 </div>
-              </div>
-        </table>
-    </form>
+                <br>
+                <div style="text-align: start;">
+                    <label for="exampleFormControlInput1">Alasan</label>
+                    <textarea name="description" class="form-control" id="description" placeholder="Description"></textarea>
+                </div>
+                <br> <br>
+
+                <button type="button" class="discard" data-bs-dismiss="modal" onclick="reset_element()">Close</button>
+                <button type="submit" class="submit" data-bs-dismiss="modal">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -326,7 +330,7 @@
             })
             
     </script>
-    <script>
+    <!-- <script>
          $(document).on("submit",function(e) {
             e.preventDefault();
             $.ajax ({
@@ -336,6 +340,34 @@
             })
             $("formvoucher")[0].reset()
         })
+    </script> -->
+    <script>
+        function reset_element(){
+          $("#new_voucher")[0].reset();
+        }
+
+        $(document).on('submit', '#new_voucher', function(e){
+          e.preventDefault();
+          $.ajax({
+            type: 'POST',
+            url: "{% url 'redeem:request_voucher' %}",
+            data: {
+              title: $('#title').val(),
+              description: $('#description').val(),
+              csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+              action:'post',
+            },
+            dataType: 'json',
+            success: function(data){
+              console.log("Done");
+              data_json();
+              $('#add_new_todo').modal('hide');
+              $('.modal_backdrop').remove();
+              reset_element()
+            }
+          })
+        })
+
     </script>
     <script>
         $(document).ready(function () {
