@@ -11,17 +11,21 @@
 {% block content %}
 
 <body>
-    This is the homepage.
-    <a href="{% url 'home:login_user' %}" role="button">login</a>
-    <li style="display: inline;">
-        <a href="{% url 'profilepage:show_profile' %}">Profile</a>
-        <a href="{% url 'redeem:show_redeem' %}">Redeem</a>
-        <a href="{% url 'recycle:show_recycle' %}">Recycle</a>
-        <a href="{% url 'shopping:show_shop' %}">Shopping</a>
-        <a href="{% url 'news:show_news' %}">News</a>
-    </li>
-    <br>
-    <a class="btn btn-dark" href="{% url 'home:logout_user' %}" role="button">Logout</a>
+<h1>Features</h1>
+<a href="{% url 'profilepage:show_profile' %}"><h2>PlasTIX Profile</h2></a>
+<p>By registering for a PlasTIX account, you will be granted access to all our available features! Customize your profile and check on your points count on our dedicated profile page.</p>
+
+<a href="{% url 'recycle:show_recycle' %}"><h2>Recycle</h2></a>
+<p>Got any plastic waste to throw away? If so, then head on over to one of our recycling posts! We've provided a list of locations where you can turn in your trash for points at our site. We also provide a delivery service for those who live far away.</p>
+
+<a href="{% url 'redeem:show_redeem' %}"><h2>Redeem</h2></a>
+<p>Once you've collected enough points from trading in your plastic waste, you can redeem those points for various items such as store coupons and phone credit.</p>
+
+<a href="{% url 'shopping:show_shop' %}"><h2>Shopping</h2></a>
+<p>Want to get into the eco-friendly lifestyle? Our shopping page showcases products and vendors with a focus on recycled materials. Can't afford an item right now? You can make bookmarks and check back later.</p>
+
+<a href="{% url 'news:show_news' %}"><h2>News</h2></a>
+<p>Looking for a good read? We bring you all the latest articles on Sustainable Energy Transition and other environmental topics from various sources.</p>
 </body>
 
 {% endblock content %}
