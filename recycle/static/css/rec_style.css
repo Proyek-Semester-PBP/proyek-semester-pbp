@@ -1,0 +1,76 @@
+input, textarea {
+        padding: 0.5rem;
+        border: 1px solid;
+        border-radius: 8px;
+        width: 100%
+    }
+
+    iframe:hover {
+        transform: scale(1.1);
+        box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12)
+;
+    }
+
+    #dropoff-card {
+        box-shadow:
+  0 5px 5px rgba(58, 58, 57, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 40px 40px rgba(0, 0, 0, 0.12)
+;
+    }
+
+    .column {
+  float: left;
+  padding: 10px; /* Should be removed. Only for demonstration */
+}
+
+.left {
+    width: 50%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+}
+
+.left img {
+    padding-right: 10px;
+}
+
+.right {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.baris {
+    margin: 60px;
+    display: flex;
+    align-items: center;
+}
+
+/* Clear floats after the columns */
+.baris:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 900px) {
+  .column {
+    height: fit-content;
+    width: 100%;
+  }
+
+  .left img {
+    padding-right: 0px;
+  }
+}
