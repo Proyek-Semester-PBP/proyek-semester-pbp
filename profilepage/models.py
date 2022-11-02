@@ -2,7 +2,7 @@ from distutils.command.upload import upload
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User 
-from tkinter import CASCADE
+
 
 
 # Create your models here.
