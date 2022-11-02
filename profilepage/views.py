@@ -8,6 +8,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from home.models import User
 from django.core.files.storage import FileSystemStorage
 from recycle.models import RecycleHistory
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 @login_required(login_url='/login/')
