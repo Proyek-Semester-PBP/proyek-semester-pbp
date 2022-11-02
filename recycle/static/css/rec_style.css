@@ -74,3 +74,18 @@ input, textarea {
     padding-right: 0px;
   }
 }
+
+.navbar-nav > li{
+  padding-left:30px;
+  padding-right:30px;
+  }
+  
+  .nav-item{
+  font-size: 20px;
+  color: #b7d6af;
+  }
+  
+  .navbar-brand{
+  font-size: 30px;
+  font-weight: bold;
+  }
