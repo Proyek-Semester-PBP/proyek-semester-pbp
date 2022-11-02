@@ -2,8 +2,29 @@
 
 {% block meta %}
 
+<link rel="stylesheet" href="static/css/style.css">
+
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+
+    <!-- ===== Fontawesome CDN Link ===== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="static/css/style.css">
+
     <title>Redeem Points</title>
+    <script src="static/js/slider.js"></script> 
+
 </head>
 
 {% endblock meta %}
@@ -11,7 +32,284 @@
 {% block content %}
 
 <body>
-    This is the points redeem page.
-</body>
+    
+    <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="page-content">
+    <!-- ***** Banner Start ***** -->
+            <div class="main-banner">
 
-{% endblock content %}
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="header-text">
+                            <h6>Get your special voucher right now!</h6>
+                            <h4><em>Hey, {{.usname}} </em> You have {{.poin}}</h4>
+                            <div class="main-button">
+                            <a href="#section1">Redeem Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+                
+    <div></div>
+
+    <section class="page-content" id="section1">
+        <div class="container">
+            
+            <div class="row">
+                <div class="col">
+                    <div class="section-heading">
+                        <h2>Voucher Belanja</h2>
+                        <span>Redeem your point to our valuable voucher!</span>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="MultiCarousel" data-items="1,3,5,3" data-slide="1" id="MultiCarousel"  data-interval="1000">
+                                <div class="MultiCarousel-inner" id="belanja">
+                                </div>
+                                <button class="btn btn-dark leftLst"><</button>
+                                <button class="btn btn-dark rightLst">></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        </div>
+        
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                <div class="section-heading">
+                    <h2>Pulsa</h2>
+                    <span>Redeem your point to our valuable voucher!</span>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="MultiCarousel" data-items="1,3,5,3" data-slide="1" id="MultiCarousel"  data-interval="1000">
+                            <div class="MultiCarousel-inner" id="pulsa">
+                            </div>
+                            <button class="btn btn-dark leftLst"><</button>
+                            <button class="btn btn-dark rightLst">></button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container" >
+            <div class="row">
+                <div class="col-lg-12">
+                <div class="section-heading">
+                    <h2>Voucher Merchant</h2>
+                    <span>Redeem your point to our valuable voucher!</span>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="MultiCarousel" data-items="1,3,5,3" data-slide="1" id="MultiCarousel"  data-interval="1000">
+                            <div class="MultiCarousel-inner" id="merchant">
+                            </div>
+                            <button class="btn btn-dark leftLst"><</button>
+                            <button class="btn btn-dark rightLst">></button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container-fluid rounded">
+        <div class="row px-5">
+            <div class="col-sm-6">
+                <div>
+                    <h3 class="text-white">Contact us!</h3>
+                    <p class="text-secondary">Fill up the form and our Team will get back to you within in 24 hours</p>
+                </div>
+                <div class="links" id="bordering">
+                    <a href="#" class="btn rounded text-white p-3"><i class="fa fa-phone icon text-primary pr-2"></i>+0123 4567 8910</a> 
+                    <a href="#" class="btn rounded text-white p-3"><i class="fa fa-envelope icon text-primary pr-3"></i>hello@flowbase.com</a> 
+                    <a href="#" class="btn rounded text-white p-3"><i class="fa fa-map-marker icon text-primary pr-3"></i>102 street 2714 Don</a> 
+                </div>
+
+            </div>
+            <div class="col-sm-6 pad">
+                <form class="rounded msg-form">
+                    <div class="form-group"> <label for="name" class="h6">Your Name</label>
+                        <div class="input-group border rounded">
+                            <div class="input-group-addon px-2 pt-1">
+                                <p class="fa fa-user-o text-primary"></p>
+                            </div> <input type="text" class="form-control border-0">
+                        </div>
+                    </div>
+                    <div class="form-group"> <label for="name" class="h6">Email</label>
+                        <div class="input-group border rounded">
+                            <div class="input-group-addon px-2 pt-1"> <i class="fa fa-envelope text-primary"></i> </div> <input type="text" class="form-control border-0">
+                        </div>
+                    </div>
+                    <div class="form-group"> <label for="msg" class="h6">Message</label> <textarea name="message" id="msgus" cols="10" rows="5" class="form-control" placeholder="Message"></textarea> </div>
+                    <div class="form-group d-flex justify-content-end"> <input type="submit" class="btn btn-primary text-white" value="send message"> </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="container"> -->
+
+    <!-- </div>
+    <div class="d-flex" id="pulsa"></div>
+    <div class="d-flex" id="merchant"></div> -->
+    <!-- Button trigger modal -->
+
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Redeem Points</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Kamu akan menukarkan poinmu dengan penawaran voucher terbaik kami. Poin akan berkurang sesuai dengan harga poin tertera pada voucher pilihanmu.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn1 btn-outline-light" data-toggle="modal" data-dismiss="modal" data-target="#myModal">Setuju</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="myModal" class="modal">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="icon-box">
+                        <i class="material-icons">&#xE876;</i>
+                    </div>    
+                    <h4 class="modal-title w-100">Success!</h4> 
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">
+                        Kamu telah berhasil menukarkan poinmu dengan voucher kami. Silahkan cek emailmu untuk info lebih lanjutnya.
+                        kumpulkan terus poin plastix dan dapatkan penawaran menarik lainnya!</p>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      
+    </body>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <script>
+        // function get_card() {
+            let voucher = "";
+            $.ajax({
+                url: "{% url 'redeem:show_json' %}",
+                type: "GET",
+                dataType: "json",
+                success: function(data){
+                    if(data == 0) {
+                        $('#belanja').html("")
+                        $('#pulsa').html("")
+                        $('#merchant').html("")
+                    }
+                    
+                    else {
+                        for (i of data){
+                            if(i.fields.jenis_voucher == "voucher belanja"){ 
+                                console.log(data)
+                                voucher += `
+                                <div class ="item">
+                                    <div class="pad15">
+                                        <div class="head-card-ind">
+                                        </div>
+                                        <h4>${i.fields.title_voucher}</h4>
+                                        <h5>🪙${i.fields.harga_poin}</h5>
+                                        <h6>${i.fields.deskripsi}</h6>
+
+                                        <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#exampleModal"> redeem now </button>
+                                    </div>
+                                    </div>
+                                    </div>
+                                </div>`;
+                                $('#belanja').html(voucher)
+                            }
+                        }
+                        voucher ='';
+                        for (i of data){
+                            if(i.fields.jenis_voucher == "pulsa"){ 
+                                console.log(data)
+                                voucher += `
+                                <div class ="item">
+                                    <div class="pad15">
+                                        <div class="head-card-pls">
+                                        </div>
+                                        <h4>${i.fields.title_voucher}</h4>
+                                        <h5>🪙${i.fields.harga_poin}</h5>
+                                        <h6>${i.fields.deskripsi}</h6>
+
+                                        <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#exampleModal"> redeem now </button>
+                                    </div>
+                                    </div>
+                                    </div>
+                                </div>`;
+                                $('#pulsa').html(voucher)
+                            }
+                        }
+                        voucher ='';
+                        title_voucher='';
+                        for (i of data){
+                            if(i.fields.jenis_voucher == "voucher merchant"){ 
+                                console.log(data)
+                                voucher += `
+                                <div class ="item">
+                                    <div class="pad15">
+                                        <div class="head-card-shop">
+                                        </div>
+                                        <h4>${i.fields.title_voucher}</h4>
+                                        <h5>🪙${i.fields.harga_poin}</h5>
+                                        <h6>${i.fields.deskripsi}</h6>
+
+                                        <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#exampleModal"> redeem now </button>
+                                    </div>
+                                    </div>
+                                    </div>
+                                </div>`;
+                                $('#merchant').html(voucher)
+                            }
+                        }
+                    }
+                },
+                error: function(data) {
+                    console.log('Error')
+                }
+            })
+        // }
+    </script>
+    
+    {% endblock content %}
