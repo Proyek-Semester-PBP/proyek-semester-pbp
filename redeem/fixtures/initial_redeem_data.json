@@ -4,8 +4,7 @@
         "pk":1,
         "fields":{
             "jenis_voucher":"voucher belanja",
-            "title_voucher" : "Voucher Belanja Rp25rb",
-            "product_voucher" : "Indomaret",            
+            "title_voucher" : "Voucher Indomaret Belanja Rp25rb",
             "harga_poin":24000,
             "deskripsi": "Voucher belanja Indomaret senilai 25.000. Voucher berlaku hingga 31 Desember 2022"
         }
@@ -15,8 +14,7 @@
         "pk":2,
         "fields":{
             "jenis_voucher":"voucher belanja",
-            "title_voucher" : "Voucher Belanja Rp50rb",
-            "product_voucher" : "Indomaret",
+            "title_voucher" : "Voucher Indomaret Belanja Rp50rb",
             "harga_poin":49000,
             "deskripsi": "Voucher belanja Indomaret senilai 55.000. Voucher berlaku hingga 31 Desember 2022"
         }
@@ -26,8 +24,7 @@
         "pk":3,
         "fields":{
             "jenis_voucher":"voucher belanja",
-            "title_voucher" : "Voucher Belanja Rp100rb",
-            "product_voucher" : "Indomaret",
+            "title_voucher" : "Voucher Indomaret Belanja Rp100rb",
             "harga_poin":99000,
             "deskripsi": "Voucher belanja Indomaret senilai 100.000. Voucher berlaku hingga 31 Desember 2022"
         }
@@ -37,8 +34,7 @@
         "pk":4,
         "fields":{
             "jenis_voucher":"voucher belanja",
-            "title_voucher" : "Voucher Belanja Rp25rb",
-            "product_voucher" : "Alfamart",
+            "title_voucher" : "Voucher Alfamart Belanja Rp25rb",
             "harga_poin":24000,
             "deskripsi": "Voucher belanja Alfamart senilai 25.000. Voucher berlaku hingga 31 Desember 2022"
         }
@@ -48,8 +44,7 @@
         "pk":5,
         "fields":{
             "jenis_voucher":"voucher belanja",
-            "title_voucher" : "Voucher Belanja Rp50rb",
-            "product_voucher" : "Alfamart",
+            "title_voucher" : "Voucher Alfamart Belanja Rp50rb",
             "harga_poin":49000,
             "deskripsi": "Voucher belanja Alfamart senilai 50.000. Voucher berlaku hingga 31 Desember 2022"
         }
@@ -59,8 +54,7 @@
         "pk":6,
         "fields":{
             "jenis_voucher":"voucher belanja",
-            "title_voucher" : "Voucher Belanja Rp100rb",
-            "product_voucher" : "Alfamart",
+            "title_voucher" : "Voucher Alfamart Belanja Rp100rb",
             "harga_poin":99000,
             "deskripsi": "Voucher belanja Alfamart senilai 10.000. Voucher berlaku hingga 31 Desember 2022"
         }
@@ -71,7 +65,6 @@
         "fields":{
             "jenis_voucher":"pulsa",
             "title_voucher" : "Pulsa Telkomsel Rp10rb",
-            "product_voucher" : "Telkomsel",
             "harga_poin":9000,
             "deskripsi": "Voucher pulsa telkomsel senilai 10.000. Voucher akan berupa nomor pulsa Prabayar dan hanya akan berlaku hingga 31 Desember 2022"
         }
@@ -83,7 +76,6 @@
         "fields":{
             "jenis_voucher":"pulsa",
             "title_voucher" : "Pulsa Telkomsel Rp25rb",
-            "product_voucher" : "Telkomsel",
             "harga_poin":24000,
             "deskripsi": "Voucher pulsa telkomsel senilai 25.000. Voucher akan berupa nomor pulsa Prabayar dan hanya akan berlaku hingga 31 Desember 2022"
         }
@@ -94,7 +86,6 @@
         "fields":{
             "jenis_voucher":"pulsa",
             "title_voucher" : "Pulsa Telkomsel Rp50rb",
-            "product_voucher" : "Telkomsel",
             "harga_poin":49000,
             "deskripsi": "Voucher pulsa telkomsel senilai 50.000. Voucher akan berupa nomor pulsa Prabayar dan hanya akan berlaku hingga 31 Desember 2022"
         }
@@ -105,7 +96,6 @@
         "fields":{
             "jenis_voucher":"pulsa",
             "title_voucher" : "Pulsa XL Rp10rb",
-            "product_voucher" : "XL",
             "harga_poin":9000,
             "deskripsi": "Voucher pulsa XL senilai 10.000. Voucher akan berupa nomor pulsa Prabayar dan hanya akan berlaku hingga 31 Desember 2022"
         }
@@ -116,7 +106,6 @@
         "fields":{
             "jenis_voucher":"pulsa",
             "title_voucher" : "Pulsa XL Rp25rb",
-            "product_voucher" : "XL",
             "harga_poin":24000,
             "deskripsi": "Voucher pulsa XL senilai 25.000. Voucher akan berupa nomor pulsa Prabayar dan hanya akan berlaku hingga 31 Desember 2022"
         }
@@ -127,7 +116,6 @@
         "fields":{
             "jenis_voucher":"pulsa",
             "title_voucher" : "Pulsa XL Rp50rb",
-            "product_voucher" : "XL",
             "harga_poin":49000,
             "deskripsi": "Voucher pulsa XL senilai 50.000. Voucher akan berupa nomor pulsa Prabayar dan hanya akan berlaku hingga 31 Desember 2022"
         }
@@ -138,7 +126,6 @@
         "fields":{
             "jenis_voucher":"pulsa",
             "title_voucher" : "Pulsa Indosat Rp10rb",
-            "product_voucher" : "Indosat",
             "harga_poin":9000,
             "deskripsi": "Voucher pulsa Indosat senilai 10.000. Voucher akan berupa nomor pulsa Prabayar dan hanya akan berlaku hingga 31 Desember 2022"
         }
@@ -149,7 +136,6 @@
         "fields":{
             "jenis_voucher":"pulsa",
             "title_voucher" : "Pulsa Indosat Rp25rb",
-            "product_voucher" : "Indosat",
             "harga_poin":24000,
             "deskripsi": "Voucher pulsa Indosat senilai 25.000. Voucher akan berupa nomor pulsa Prabayar dan hanya akan berlaku hingga 31 Desember 2022"
         }
@@ -160,7 +146,6 @@
         "fields":{
             "jenis_voucher":"pulsa",
             "title_voucher" : "Pulsa Indosat Rp50rb",
-            "product_voucher" : "Indosat",
             "harga_poin":49000,
             "deskripsi": "Voucher pulsa Indosat senilai 50.000. Voucher akan berupa nomor pulsa Prabayar dan hanya akan berlaku hingga 31 Desember 2022"
         }
@@ -171,10 +156,9 @@
         "pk":16,
         "fields":{
             "jenis_voucher":"voucher merchant",
-            "title_voucher" : "Potongan Rp20rb Mcd",
-            "product_voucher" : "Mcd",
+            "title_voucher" : "Potongan Rp20rb Yoshinoya",
             "harga_poin":19000,
-            "deskripsi":  "Potongan senilai 20.000 di Mcd. Voucher hanya akan berlaku hingga 31 Desember 2022"
+            "deskripsi":  "Potongan senilai 20.000 di Yoshinoya. Voucher hanya akan berlaku hingga 31 Desember 2022"
         }
     },
     {
@@ -183,7 +167,6 @@
         "fields":{
             "jenis_voucher":"voucher merchant",
             "title_voucher" : "Potongan Rp20rb Chatime",
-            "product_voucher" : "Chatime",
             "harga_poin":19000,
             "deskripsi": "Potongan senilai 20.000 di Chatime. Voucher hanya akan berlaku hingga 31 Desember 2022"
         }
@@ -194,7 +177,6 @@
         "fields":{
             "jenis_voucher":"voucher merchant",
             "title_voucher" : "Potongan Rp20rb PizzaHut",
-            "product_voucher" : "PizzaHut",
             "harga_poin":19000,
             "deskripsi": "Potongan senilai 20.000 di PizzaHut. Voucher hanya akan berlaku hingga 31 Desember 2022"
         }
@@ -205,7 +187,6 @@
         "fields":{
             "jenis_voucher":"voucher merchant",
             "title_voucher" : "Potongan Rp25rb Ruparupa.com",
-            "product_voucher" : "Ruparupa.com",
             "harga_poin":24000,
             "deskripsi": "Potongan senilai 20.000 di Ruparupa.com. Voucher hanya akan berlaku hingga 31 Desember 2022"
         }
@@ -216,7 +197,6 @@
         "fields":{
             "jenis_voucher":"voucher merchant",
             "title_voucher" : "Potongan Rp25rb Ace Hardware",
-            "product_voucher" : "Ace Hardware",
             "harga_poin":24000,
             "deskripsi": "Potongan senilai 20.000 di Ace Hardware. Voucher hanya akan berlaku hingga 31 Desember 2022"
         }
@@ -226,10 +206,9 @@
         "pk":21,
         "fields":{
             "jenis_voucher":"voucher merchant",
-            "title_voucher" : "Pulsa Rp25rb IKEA",
-            "product_voucher" : "IKEA",
+            "title_voucher" : "Potongan Rp25rb Informa",
             "harga_poin":24000,
-            "deskripsi": "Potongan senilai 20.000 di IKEA. Voucher hanya akan berlaku hingga 31 Desember 2022"
+            "deskripsi": "Potongan senilai 20.000 di Informa. Voucher hanya akan berlaku hingga 31 Desember 2022"
         }
     }
 

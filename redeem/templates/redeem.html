@@ -1,16 +1,16 @@
-<{% extends 'base.html' %}
->
+{% extends 'base.html' %}
+
 {% block meta %}
+
+
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- ===== Link Swiper's CSS ===== -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
-    <!-- ===== Fontawesome CDN Link ===== -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Redeem Points</title>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -18,177 +18,430 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="static/css/style.css">
 
-    <script>
-        $(document).ready(function () {
-            var itemsMainDiv = ('.MultiCarousel');
-            var itemsDiv = ('.MultiCarousel-inner');
-            var itemWidth = "";
+    <title>Redeem Points</title>
 
-            $('.leftLst, .rightLst').click(function () {
-                var condition = $(this).hasClass("leftLst");
-                if (condition)
-                    click(0, this);
-                else
-                    click(1, this)
-            });
+    {% load static %}
+   <script src="{%static 'js/slider.js'%}"></script> 
+   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-            ResCarouselSize();
-
-            $(window).resize(function () {
-                ResCarouselSize();
-            });
-
-            //this function define the size of the items
-            function ResCarouselSize() {
-                var incno = 0;
-                var dataItems = ("data-items");
-                var itemClass = ('.item');
-                var id = 0;
-                var btnParentSb = '';
-                var itemsSplit = '';
-                var sampwidth = $(itemsMainDiv).width();
-                var bodyWidth = $('body').width();
-                $(itemsDiv).each(function () {
-                    id = id + 1;
-                    var itemNumbers = $(this).find(itemClass).length;
-                    btnParentSb = $(this).parent().attr(dataItems);
-                    itemsSplit = btnParentSb.split(',');
-                    $(this).parent().attr("id", "MultiCarousel" + id);
+html, body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  background-color: #f8fff6;
+  font-size: 16px;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+body .page-content {
+  margin-top: 110px;
+  padding: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  content: 80%;
 
 
-                    if (bodyWidth >= 1200) {
-                        incno = itemsSplit[3];
-                        itemWidth = sampwidth / incno;
-                    }
-                    else if (bodyWidth >= 992) {
-                        incno = itemsSplit[2];
-                        itemWidth = sampwidth / incno;
-                    }
-                    else if (bodyWidth >= 768) {
-                        incno = itemsSplit[1];
-                        itemWidth = sampwidth / incno;
-                    }
-                    else {
-                        incno = itemsSplit[0];
-                        itemWidth = sampwidth / incno;
-                    }
-                    $(this).css({ 'transform': 'translateX(0px)', 'width': itemWidth * itemNumbers });
-                    $(this).find(itemClass).each(function () {
-                        $(this).outerWidth(itemWidth);
-                    });
 
-                    $(".leftLst").addClass("over");
-                    $(".rightLst").removeClass("over");
+}
+.main-banner {
+    background-position: center center;
+    background-color: #fff;
+    background-image: url(../images/gift.png);
+    background-size: cover;
+    height: 80%;
+    min-height:60%;
+    min-width: 80%;
+    border-radius: 23px;
+    padding: 80px 60px;
+  }
 
-                });
-            }
-            //this function used to move the items
-            function ResCarousel(e, el, s) {
-                var leftBtn = ('.leftLst');
-                var rightBtn = ('.rightLst');
-                var translateXval = '';
-                var divStyle = $(el + ' ' + itemsDiv).css('transform');
-                var values = divStyle.match(/-?[\d\.]+/g);
-                var xds = Math.abs(values[4]);
-                if (e == 0) {
-                    translateXval = parseInt(xds) - parseInt(itemWidth * s);
-                    $(el + ' ' + rightBtn).removeClass("over");
+  
+  .main-banner h6 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    color: beige;
+    font-weight: 400;
+    margin-bottom: 25px;
+  }
+  
+  .main-banner h4 {
+    font-family: 'Poppins', sans-serif;
 
-                    if (translateXval <= itemWidth / 2) {
-                        translateXval = 0;
-                        $(el + ' ' + leftBtn).addClass("over");
-                    }
+    font-size: 45px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    color:#011b10   ;
+
+  }
+  .container {
+    padding: 0px;
+  }
+
+  .main-button a {
+    font-size: 14px;
+    color: #fff;
+    background-color: #476f4d;
+    padding: 12px 30px;
+    display: inline-block;
+    border-radius: 25px;
+    font-weight: 400;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+
+  }
+
+
+
+
+section{
+  font-family: 'Poppins', sans-serif;
+
+  border-top: 3px dotted #eee;
+  position: relative;  
+  height: 700px;
+  display: flex;
+  align-items: center;
+  padding: 80px 50px;
+}
+
+
+.section1{
+  font-family: 'Poppins', sans-serif;
+
+  border-top: 3px dotted #eee;
+  position: relative;  
+  height: 350px;
+  display: flex;
+  align-items: center;
+  padding: 80px 50px;
+}
+
+
+.swiper{
+  width: 550px;
+}
+
+
+.MultiCarousel { 
+    float: left; 
+    overflow: hidden; 
+    padding: 15px; 
+    width: 100%;
+    position:absolute; 
+    top: 200%;
+
+
+ }
+.MultiCarousel .MultiCarousel-inner { 
+    transition: 1s ease all; 
+    float: left; 
+    width: 500px;
+
+    
+
+}
+.MultiCarousel .MultiCarousel-inner .item { 
+    float: left;
+}
+.MultiCarousel .MultiCarousel-inner .item > div { 
+    text-align: center; 
+    margin:10px;
+    
+    background:#e4deae5e ; 
+    color:rgb(47, 69, 34);
+    height: 450px;
+    width:320px;
+    border-radius: 20px;
+    border:solid;
+
+
+
+}
+
+.MultiCarousel .MultiCarousel-inner .item .head-card-ind{ 
+  text-align: center; 
+  padding: 10px;
+  
+  background-image: url("../images/belanja.png");
+  color:rgb(43, 51, 39);
+  height: 148px;
+  width: 308px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+
+}
+
+.MultiCarousel .MultiCarousel-inner .item .head-card-pls{ 
+  text-align: center; 
+  padding: 10px;
+  
+  background-image: url("../images/pulsa.png");
+  color:rgb(43, 51, 39);
+  height: 148px;
+  width:305px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+
+}
+
+.MultiCarousel .MultiCarousel-inner .item .head-card-shop{ 
+  text-align: center; 
+  padding: 10px;
+  
+  background-image: url("/images/shop.png");
+  color:rgb(43, 51, 39);
+  height: 148px;
+  width:308px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+
+}
+
+
+.MultiCarousel .MultiCarousel-inner .item .btn{
+background-color: #014923;
+color:#eee;
+border-radius: 20px;
+height: 45px;
+width: 280px;
+}
+
+
+.MultiCarousel h4{
+  margin-left: 20px;
+  margin-right:20px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+
+
+}
+.MultiCarousel h5{
+  margin-bottom: 30px;
+  margin-top: 30px;
+  
+
+}
+.MultiCarousel h6{
+  font-size: 12px;
+  margin-bottom: 15px;
+  margin-left: 30px;
+  margin-right:30px;
+
+}
+
+
+
+
+.MultiCarousel .leftLst, .MultiCarousel .rightLst { 
+    position:absolute; 
+    border-radius:50%;
+    top:calc(50% - 20px); 
+}
+.MultiCarousel .leftLst { 
+    left:0; 
+}
+.MultiCarousel .rightLst { 
+    right:0; 
+}  
+.MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { 
+    pointer-events: none; 
+    background:rgb(199, 215, 202); 
+}  
+
+
+.modal {
+  text-align: center;
+}
+.modal .btn1{
+  background-color: #014923;
+  border-radius: 10px;
+  height: 45px;
+  width: 90px;
+  }
+
+@media screen and (min-device-width: 768px) {
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.modal .fade{
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.modal-confirm {		
+	color: #636363;
+	width: 325px;
+	font-size: 14px;
+}
+.modal-confirm .modal-content {
+	padding: 20px;
+	border-radius: 5px;
+	border: none;
+
+}
+.modal-confirm .modal-header {
+	border-bottom: none;   
+	position: relative;
+}
+.modal-confirm h4 {
+	text-align: center;
+	font-size: 26px;
+	margin: 30px 0 -15px;
+}
+.modal-confirm .form-control, .modal-confirm .btn {
+	min-height: 40px;
+	border-radius: 3px; 
+}
+.modal-confirm .close {
+	position: absolute;
+	top: -5px;
+	right: -5px;
+}	
+.modal-confirm .modal-footer {
+	border: none;
+	text-align: center;
+	border-radius: 5px;
+	font-size: 13px;
+}	
+.modal-confirm .icon-box {
+	color: rgb(255, 255, 255);		
+	position: absolute;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	top: -70px;
+	width: 95px;
+	height: 95px;
+	border-radius: 50%;
+	z-index: 9;
+	background: #6BB071 ;
+	padding: 15px;
+	text-align: center;
+	box-shadow: 0px 2px 2px rgba(51, 50, 50, 0.356);
+}
+.modal-confirm .icon-box i {
+	font-size: 58px;
+	position: relative;
+	top: 3px;
+}
+.modal-confirm.modal-dialog {
+	margin-top: 80px;
+}
+.modal-confirm .btn {
+	color: #fff;
+	border-radius: 4px;
+	background: #6BB071;
+	text-decoration: none;
+	transition: all 0.4s;
+	line-height: normal;
+	border: none;
+}
+.modal-confirm .btn:hover, .modal-confirm .btn:focus {
+	background: #6BB071;
+	outline: none;
+}
+.trigger-btn {
+	display: inline-block;
+	margin: 100px auto;
+}
+    
+.navbar-nav > li{
+                padding-left:30px;
+                padding-right:30px;
                 }
-                else if (e == 1) {
-                    var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
-                    translateXval = parseInt(xds) + parseInt(itemWidth * s);
-                    $(el + ' ' + leftBtn).removeClass("over");
-
-                    if (translateXval >= itemsCondition - itemWidth / 2) {
-                        translateXval = itemsCondition;
-                        $(el + ' ' + rightBtn).addClass("over");
-                    }
-                }
-                $(el + ' ' + itemsDiv).css('transform', 'translateX(' + -translateXval + 'px)');
+            
+            .nav-item{
+                font-size: 20px;
+                color: #b7d6af;
             }
 
-            //It is used to get some elements from btn
-            function click(ell, ee) {
-                var Parent = "#" + $(ee).parent().attr("id");
-                var slide = $(Parent).attr("data-slide");
-                ResCarousel(ell, Parent, slide);
+            .navbar-brand{
+                font-size: 30px;
+                font-weight: bold;
             }
-        }); 
-    </script>
-    <style>
 
-        .MultiCarousel { 
-            float: left; 
-            overflow: hidden; 
-            padding: 15px; 
-            width: 100%;
-            position:absolute; 
-            top: 200%;
-         }
-        .MultiCarousel .MultiCarousel-inner { 
-            transition: 1s ease all; 
-            float: left; 
-        }
-        .MultiCarousel .MultiCarousel-inner .item { 
-            float: left;
-        }
-        .MultiCarousel .MultiCarousel-inner .item > div { 
-            text-align: center; 
-            padding:10px; 
-            margin:10px; 
-            background:#f1f1f1; 
-            color:#666;
-        }
-        .MultiCarousel .leftLst, .MultiCarousel .rightLst { 
-            position:absolute; 
-            border-radius:50%;
-            top:calc(50% - 20px); 
-        }
-        .MultiCarousel .leftLst { 
-            left:0; 
-        }
-        .MultiCarousel .rightLst { 
-            right:0; 
-        }  
-        .MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { 
-            pointer-events: none; 
-            background:#ccc; 
-        }  
-    </style>
+   </style>
 
 </head>
 
 {% endblock meta %}
 
 {% block content %}
+<nav class="navbar navbar-expand-lg" style="background-color: #476f4d;">
+    <div class="container-fluid" >
+      <a class="navbar-brand" href="{% url 'home:show_homepage' %}">
+        <img src="" class="rounded-circle img-fluid" style="width: 60px;">
+        PlasTIX</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 px-10">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'shopping:show_shop' %}">Shopping</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'profilepage:show_profile' %}">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'news:show_news' %}">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'redeem:show_redeem' %}">Redeem</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'recycle:show_recycle' %}">Recycle</a>
+          </li>
+        </ul>
+          <a class="btn btn-dark btn-lg" href="{% url 'home:logout_user' %}">Logout</a>
+      </div>
+    </div>
+  </nav>
 
-<body class="page content">
+<body>
     
     <div class="container">
         <div class="row">
           <div class="col-lg-12">
             <div class="page-content">
-    <!-- ***** Banner Start ***** -->
             <div class="main-banner">
-            <div class="row">
-                <div class="col-lg-7">
-                <div class="header-text">
-                    <h6>Get your Special Voucher Right Now!</h6>
-                    <h4><em>Hey, {{.usname}} </em> You have {{.poin}}</h4>
-                    <div class="main-button">
-                    <a href="browse.html">Redeem Now</a>
+
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="header-text">
+                            <h6><em>Get your special voucher right now!</em></h6>
+                            {%if user.is_authenticated%}
+                            <h4><em>Welcome, {{user.get_username}}</em> </h4>
+                            {% else %}
+                            <h4>Redeem now!</h4>
+
+                            {% endif %}
+                            <div class="main-button">
+                            <a href="#section1">Redeem Now</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                </div>
-            </div>
             </div>
             </div>
           </div>
@@ -198,8 +451,9 @@
                 
     <div></div>
 
-    <section class="section">
+    <section class="page-content" id="section1">
         <div class="container">
+            
             <div class="row">
                 <div class="col">
                     <div class="section-heading">
@@ -209,50 +463,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="MultiCarousel" data-items="1,3,5,3" data-slide="1" id="MultiCarousel"  data-interval="1000">
-                                <div class="MultiCarousel-inner">
-                                    <div class="item">
-                                        <div class="pad15">
-                                            <p class="lead">Voucher</p>
-                                            <p>Rp. 10.0000</p>
-                                            <p>5Deskripsi</p>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="pad15">
-                                            <p class="lead">Voucher</p>
-                                            <p>Rp. 10.0000</p>
-                                            <p>Deskripsi</p>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="pad15">
-                                            <p class="lead">Voucher</p>
-                                            <p>Rp. 10.0000</p>
-                                            <p>Deskripsi</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="item">
-                                        <div class="pad15">
-                                            <p class="lead">Voucher</p>
-                                            <p>Rp. 10.0000</p>
-                                            <p>Deskripsi</p>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="pad15">
-                                            <p class="lead">Voucher</p>
-                                            <p>Rp. 10.0000</p>
-                                            <p>Deskripsi</p>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="pad15">
-                                            <p class="lead">Voucher</p>
-                                            <p>Rp. 10.0000</p>
-                                            <p>Deskripsi</p>
-                                        </div>
-                                    </div>
+                                <div class="MultiCarousel-inner" id="belanja">
                                 </div>
                                 <button class="btn btn-dark leftLst"><</button>
                                 <button class="btn btn-dark rightLst">></button>
@@ -263,9 +474,12 @@
                 </div>
             </div>
         </div>
-        <div id="belanja"></div>
+
+        </div>
+        
     </section>
-    <section>
+
+    <section class="section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -273,12 +487,22 @@
                     <h2>Pulsa</h2>
                     <span>Redeem your point to our valuable voucher!</span>
                 </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="MultiCarousel" data-items="1,3,5,3" data-slide="1" id="MultiCarousel"  data-interval="1000">
+                            <div class="MultiCarousel-inner" id="pulsa">
+                            </div>
+                            <button class="btn btn-dark leftLst"><</button>
+                            <button class="btn btn-dark rightLst">></button>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section>
+    <section class="section">
         <div class="container" >
             <div class="row">
                 <div class="col-lg-12">
@@ -286,16 +510,350 @@
                     <h2>Voucher Merchant</h2>
                     <span>Redeem your point to our valuable voucher!</span>
                 </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="MultiCarousel" data-items="1,3,5,3" data-slide="1" id="MultiCarousel"  data-interval="1000">
+                            <div class="MultiCarousel-inner" id="merchant">
+                            </div>
+                            <button class="btn btn-dark leftLst"><</button>
+                            <button class="btn btn-dark rightLst">></button>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <section class="section1">
+        <div class="row">
+            <div class="col-lg-12" style="color: #014923;">
+                <h1> Let us know!</h1>
+                <h5> Apakah kamu tidak menemukan voucher favoritmu? Maukah kamu memberitahu kami?.</h5>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#letModal">Beri tahu kami!</button>
+
+            </div>
+        </div>
+
+
+
+    </section>
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Redeem Points</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Kamu akan menukarkan poinmu dengan penawaran voucher terbaik kami. Poin akan berkurang sesuai dengan harga poin tertera pada voucher pilihanmu.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn1 btn-outline-light" data-toggle="modal" data-dismiss="modal" data-target="#myModal">Setuju</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="myModal" class="modal">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="icon-box">
+                        <i class="material-icons">&#xE876;</i>
+                    </div>    
+                    <h4 class="modal-title w-100">Success!</h4> 
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">
+                        Kamu telah berhasil menukarkan poinmu dengan voucher kami. Silahkan cek emailmu untuk info lebih lanjutnya.
+                        kumpulkan terus poin plastix dan dapatkan penawaran menarik lainnya!</p>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
-    <!-- <div class="container"> -->
+    </div>
+    <div class="modal" id="letModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content" style="width:500px">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Let us know</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="reset_element()"></button>
+            </div>
+            <div class="modal-body">
+              <form method="POST" action="" id="new_voucher">
+                {% csrf_token %}
+                <div style="text-align: start;">
+                    <label for="exampleFormControlInput1">Merchant favoritmu</label>
+                    <input type="text" name="title" class="form-control" id="title" placeholder="Merchant favorit" required>
+                </div>
+                <br>
+                <div style="text-align: start;">
+                    <label for="exampleFormControlInput1">Alasan</label>
+                    <textarea name="description" class="form-control" id="description" placeholder="Description"></textarea>
+                </div>
+                <br> <br>
 
-    <!-- </div>
-    <div class="d-flex" id="pulsa"></div>
-    <div class="d-flex" id="merchant"></div> -->
-</body>
+                <button type="button" class="discard" data-bs-dismiss="modal" onclick="reset_element()">Close</button>
+                <button type="submit" class="submit" data-bs-dismiss="modal">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
 
-{% endblock content %}
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      
+    </body>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <script>
+            let voucher = "";
+            $.ajax({
+                url: "{% url 'redeem:show_json' %}",
+                type: "GET",
+                dataType: "json",
+                success: function(data){
+                    if(data == 0) {
+                        $('#belanja').html("")
+                        $('#pulsa').html("")
+                        $('#merchant').html("")
+                    }
+                    
+                    else {
+                        for (i of data){
+                            if(i.fields.jenis_voucher == "voucher belanja"){ 
+                                console.log(data)
+                                voucher += `
+                                <div class ="item">
+                                    <div class="pad15">
+                                        <div class="head-card-ind">
+                                        </div>
+                                        <h4>${i.fields.title_voucher}</h4>
+                                        <h5>🪙${i.fields.harga_poin}</h5>
+                                        <h6>${i.fields.deskripsi}</h6>
+                                        {%if user.is_authenticated%}
+                                        <button type="button" class="btn btn-outline-light clr" data-toggle="modal" data-target="#exampleModal"> redeem now </button>
+                                        {% else %}
+                                        <a class="btn" href=/login>Redeem Now</a>
+                                        {% endif %}
+                                    </div>
+                                    </div>
+                                    </div>
+                                </div>`;
+                                $('#belanja').html(voucher)
+                            }
+                        }
+                        voucher ='';
+                        for (i of data){
+                            if(i.fields.jenis_voucher == "pulsa"){ 
+                                console.log(data)
+                                voucher += `
+                                <div class ="item">
+                                    <div class="pad15">
+                                        <div class="head-card-pls">
+                                        </div>
+                                        <h4>${i.fields.title_voucher}</h4>
+                                        <h5>🪙${i.fields.harga_poin}</h5>
+                                        <h6>${i.fields.deskripsi}</h6>
+                                        {%if user.is_authenticated%}
+                                        <button type="button" class="btn btn-outline-light clr" data-toggle="modal" data-target="#exampleModal"> redeem now </button>
+                                        {% else %}
+                                        <a class="btn" href=/login>Redeem Now</a>
+                                        {% endif %}
+                                    </div>
+                                    </div>
+                                    </div>
+                                </div>`;
+                                $('#pulsa').html(voucher)
+                            }
+                        }
+                        
+                        voucher ='';
+                        title_voucher='';
+                        for (i of data){
+                            if(i.fields.jenis_voucher == "voucher merchant"){ 
+                                console.log(data)
+                                voucher += `
+                                <div class ="item">
+                                    <div class="pad15">
+                                        <div class="head-card-shop">
+                                        </div>
+                                        <h4>${i.fields.title_voucher}</h4>
+                                        <h5>🪙${i.fields.harga_poin}</h5>
+                                        <h6>${i.fields.deskripsi}</h6>
+                                        {%if user.is_authenticated%}
+                                        <button type="button" class="btn btn-outline-light clr" data-toggle="modal" data-target="#exampleModal"> redeem now </button>
+                                        {% else %}
+                                        <a class="btn" href=/login>Redeem Now</a>
+                                        {% endif %}
+                                    </div>
+                                    </div>
+                                    </div>
+                                </div>`;
+                                $('#merchant').html(voucher)
+                            }
+                        }
+                    }
+                },
+                error: function(data) {
+                    console.log('Error')
+                }
+            })
+            
+    </script>
+    <!-- <script>
+         $(document).on("submit",function(e) {
+            e.preventDefault();
+            $.ajax ({
+                url: "{% url 'redeem:request_voucher' %}",
+                type: "POST",
+                body: new FormData(document.querySelector("#modalsat"))
+            })
+            $("formvoucher")[0].reset()
+        })
+    </script> -->
+    <script>
+        function reset_element(){
+          $("#new_voucher")[0].reset();
+        }
+
+        $(document).on('submit', '#new_voucher', function(e){
+          e.preventDefault();
+          $.ajax({
+            type: 'POST',
+            url: "{% url 'redeem:request_voucher' %}",
+            data: {
+              title: $('#title').val(),
+              description: $('#description').val(),
+              csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+              action:'post',
+            },
+            dataType: 'json',
+            success: function(data){
+              console.log("Done");
+              data_json();
+              $('#add_new_todo').modal('hide');
+              $('.modal_backdrop').remove();
+              reset_element()
+            }
+          })
+        })
+
+    </script>
+    <script>
+        $(document).ready(function () {
+    var itemsMainDiv = ('.MultiCarousel');
+    var itemsDiv = ('.MultiCarousel-inner');
+    var itemWidth = "";
+
+    $('.leftLst, .rightLst').click(function () {
+        var condition = $(this).hasClass("leftLst");
+        if (condition)
+            click(0, this);
+        else
+            click(1, this)
+    });
+
+    ResCarouselSize();
+
+    $(window).resize(function () {
+        ResCarouselSize();
+    });
+
+    //this function define the size of the items
+    function ResCarouselSize() {
+        var incno = 0;
+        var dataItems = ("data-items");
+        var itemClass = ('.item');
+        var id = 0;
+        var btnParentSb = '';
+        var itemsSplit = '';
+        var sampwidth = $(itemsMainDiv).width();
+        var bodyWidth = $('body').width();
+        $(itemsDiv).each(function () {
+            id = id + 1;
+            var itemNumbers = $(this).find(itemClass).length;
+            btnParentSb = $(this).parent().attr(dataItems);
+            itemsSplit = btnParentSb.split(',');
+            $(this).parent().attr("id", "MultiCarousel" + id);
+
+
+            if (bodyWidth >= 1200) {
+                incno = itemsSplit[3];
+                itemWidth = sampwidth / incno;
+            }
+            else if (bodyWidth >= 992) {
+                incno = itemsSplit[2];
+                itemWidth = sampwidth / incno;
+            }
+            else if (bodyWidth >= 768) {
+                incno = itemsSplit[1];
+                itemWidth = sampwidth / incno;
+            }
+            else {
+                incno = itemsSplit[0];
+                itemWidth = sampwidth / incno;
+            }
+            $(this).css({ 'transform': 'translateX(0px)', 'width': itemWidth * itemNumbers });
+            $(this).find(itemClass).each(function () {
+                $(this).outerWidth(itemWidth);
+            });
+
+            $(".leftLst").addClass("over");
+            $(".rightLst").removeClass("over");
+
+        });
+    }
+    //this function used to move the items
+    function ResCarousel(e, el, s) {
+        var leftBtn = ('.leftLst');
+        var rightBtn = ('.rightLst');
+        var translateXval = '';
+        var divStyle = $(el + ' ' + itemsDiv).css('transform');
+        var values = divStyle.match(/-?[\d\.]+/g);
+        var xds = Math.abs(values[4]);
+        if (e == 0) {
+            translateXval = parseInt(xds) - parseInt(itemWidth * s);
+            $(el + ' ' + rightBtn).removeClass("over");
+
+            if (translateXval <= itemWidth / 2) {
+                translateXval = 0;
+                $(el + ' ' + leftBtn).addClass("over");
+            }
+        }
+        else if (e == 1) {
+            var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
+            translateXval = parseInt(xds) + parseInt(itemWidth * s);
+            $(el + ' ' + leftBtn).removeClass("over");
+
+            if (translateXval >= itemsCondition - itemWidth / 2) {
+                translateXval = itemsCondition;
+                $(el + ' ' + rightBtn).addClass("over");
+            }
+        }
+        $(el + ' ' + itemsDiv).css('transform', 'translateX(' + -translateXval + 'px)');
+    }
+
+    //It is used to get some elements from btn
+    function click(ell, ee) {
+        var Parent = "#" + $(ee).parent().attr("id");
+        var slide = $(Parent).attr("data-slide");
+        ResCarousel(ell, Parent, slide);
+    }
+}); 
+    </script>
+    
+    
+    {% endblock content %}

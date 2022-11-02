@@ -131,7 +131,7 @@
     <body>
     <nav class="navbar navbar-expand-lg" style="background-color: #476f4d;">
         <div class="container-fluid" >
-          <a class="navbar-brand" href="{% url 'home:show_home_loggedin' %}">
+          <a class="navbar-brand" href="{% url 'home:show_homepage' %}">
             <img src="{{profpic}}" alt="Logo" class="rounded-circle img-fluid" style="width: 60px;">
             PlasTIX</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -155,7 +155,7 @@
                 <a class="nav-link active" aria-current="page" href="{% url 'recycle:show_recycle' %}">Recycle</a>
               </li>
             </ul>
-              <a class="btn btn-danger btn-lg" href="{% url 'home:logout_user' %}">Logout</a>
+              <a class="btn btn-dark btn-lg" href="{% url 'home:logout_user' %}">Logout</a>
           </div>
         </div>
       </nav>

@@ -8,25 +8,22 @@ from .models import User
 from profilepage.models import Profile
 from .forms import CustomUserCreationForm  
 from django.contrib import messages
+from recycle.models import RecycleHistory
 
 # Create your views here.
+@login_required(login_url='/login/')
 def show_homepage(request):
     return render(request, "home.html")
-
-@login_required(login_url='/home/login/')
-def show_home_loggedin(request):
-    return render(request, "home_loggedin.html")
 
 def login_user(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
-        
         if user is not None:
             login(request, user)
             NewProfile(user)
-            response = HttpResponseRedirect(reverse('home:show_home_loggedin'))
+            response = HttpResponseRedirect(reverse('home:show_homepage'))
             return response
         else:
             messages.info(request, 'Username or Password is incorrect!')
@@ -56,6 +53,7 @@ def NewProfile(user):
         temp = Profile.objects.get(user = user) 
     except Profile.DoesNotExist:
         url = "https://img.freepik.com/free-vector/cute-cow-surprised-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3874.jpg?w=360"
+        RecycleHistory.objects.create(user = user, name = user, date = "-", weight = 0, point = 0, location = "-", is_pickup = False, description = "-")
         return Profile.objects.create(user=user, name="-", email="-", mobile="-", github="-", instagram="-", twitter="-", facebook="-", point = 0, weight = 0, profpic = url)
         
     

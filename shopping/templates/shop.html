@@ -4,14 +4,319 @@
 
 <head>
     <title>Shop</title>
+    <style>
+        .card-size-adjust {
+            width: 30%;
+        }
+
+        .item-img-card{
+            width: 572px;
+            height: 286px;
+            object-fit: contain;        
+        }
+
+        .item-img-modal{
+            width: 982px;
+            height: 491px;
+            object-fit: contain;
+            border: 5px solid green;
+            border-radius: 2%;
+            padding: 10px;
+        }
+
+        .vendor-img{
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            border: 3px solid lightgray;
+            border-radius: 50%;
+        }
+
+        .bookmark-img{
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            border: 2px solid green;
+            border-radius: 2%;
+            margin: 8px;
+        }
+
+        @media (max-width: 991px) {
+            .bookmark-img{
+                width: 100px;
+                height: 100px;
+                margin: 17px;
+            }
+        }
+
+        @media (max-width: 959px) {
+            .card-size-adjust {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .bookmark-img{
+                display: none;
+            }
+        }
+
+        @media (max-width: 639px) {
+            .card-size-adjust {
+                width: auto;
+                min-width: 45%;
+            }
+        }
+
+        @media (max-width: 280px) {
+            .vendor-img{
+                width: 150px;
+                height: 150px;
+            }
+        }
+        .navbar-nav > li{
+                padding-left:30px;
+                padding-right:30px;
+                }
+            
+            .nav-item{
+                font-size: 20px;
+                color: #b7d6af;
+            }
+
+            .navbar-brand{
+                font-size: 30px;
+                font-weight: bold;
+            } 
+    </style>
+    <script>
+        async function refreshItems() {
+            const items = await fetch("{% url 'shopping:show_item_json' %}").then((response) => response.json());
+            
+            let htmlItems = '';
+            items.forEach((item) => {
+
+                htmlItems += `<div class="card mx-3 my-3 card-size-adjust">
+                                <div class="card-body">
+                                    <img class="item-img-card img-fluid" src="${item.fields.image}">
+                                </div>
+                                <div class="card-footer text-center">
+                                    <h5 class="card-title">${item.fields.name}</h5>
+                                </div>
+                                <a role="button" data-bs-toggle="modal" data-bs-target="#item${item.pk}" class="stretched-link"></a>
+                            </div>`;
+
+                htmlItems += `<div class="modal fade" id="item${item.pk}" tabindex="-1" aria-labelledby="itemLabel${item.pk}" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-success">
+                                            <h1 class="modal-title fs-5 text-white" id="itemLabel${item.pk}">${item.fields.name}</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body text-center">
+                                            <img class="item-img-modal img-fluid" src="${item.fields.image}">
+                                            <h2 class="modal-title mt-2 mb-1">Rp${item.fields.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ".")}</h2>
+                                        </div>
+                                        <div class="flex modal-body border-top" style="white-space: pre-wrap;"><p class="modal-text">${item.fields.description}</p></div>
+                                        {% if user.is_authenticated %}
+                                        <div class="flex modal-body border-top">
+                                            <h5>Give this product a review!</h5>
+                                            <form id="reviewForm${item.pk}" onsubmit="return false;">
+                                                {% csrf_token %}
+                                                <div class="form-group my-3">
+                                                    <label>Rating</label>
+                                                    <select class="form-control" name="rating" required>
+                                                        <option value="1">1 Star - Poor</option>
+                                                        <option value="2">2 Stars - Mediocre</option>
+                                                        <option value="3">3 Stars - Good</option>
+                                                        <option value="4">4 Stars - Great</option>
+                                                        <option value="5">5 Stars - Amazing!</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group my-3">
+                                                    <label>Comment</label>
+                                                    <textarea class="form-control" name="comment" placeholder="Comment" rows="3" required></textarea>
+                                                </div>
+                                                <button type="submit" name="submit" class="btn btn-success" onclick="makeReview(${item.pk})">Submit</button>
+                                            </form>
+                                        </div>
+                                        {% endif %}
+                                        <div class="modal-footer justify-content-center">
+                                            {% if user.is_authenticated %}
+                                                <button type="button" class="btn btn-secondary" onclick="bookmarkItem(${item.pk})">📑 Bookmark item</button>
+                                            {% endif %}
+                                            <a role="button" class="btn btn-success" href="${item.fields.link}">🏬 Go to Store Page</a>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>`
+            });
+            document.getElementById("items").innerHTML = htmlItems
+        }
+
+        async function refreshVendors() {
+            const vendors = await fetch("{% url 'shopping:show_vendor_json' %}").then((response) => response.json());
+            
+            let htmlVendors = '';
+            vendors.forEach((vendor) => {
+
+                htmlVendors += `<div class="card mx-3 my-3 card-size-adjust">
+                                <div class="card-header text-center">
+                                    <img class="vendor-img my-3" src="${vendor.fields.image}">
+                                    <h5 class="card-title mt-2 mb-3">${vendor.fields.name}</h5>
+                                </div>
+                                <div class="card-body text-center">
+                                    <p class="card-text">${vendor.fields.description}</p>
+                                </div>
+                                <a role="button" class="stretched-link" href="${vendor.fields.link}"></a>
+                            </div>`;
+            });
+            document.getElementById("vendors").innerHTML = htmlVendors
+        }
+
+        async function refreshBookmarks() {
+            const bookmarks = await fetch("{% url 'shopping:show_bookmark_json' %}").then((response) => response.json());
+            let htmlBookmarks = '';
+            if (bookmarks.length == 0) {
+                htmlBookmarks += `<h5 style="text-align: center; color: lightgray;">You currently have no bookmarks.</h5>`;
+            } else {
+                bookmarks.forEach((bookmark) => {
+                    
+                    htmlBookmarks += `<div class="card mb-3">
+                                        <div class="row no-gutters">
+                                            <div class="col-md-3">
+                                                <img src="${bookmark.fields.image}" class="bookmark-img">
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">${bookmark.fields.name}</h5>
+                                                    <p class="card-text">${bookmark.fields.description.slice(0,128)}…</p>
+                                                    <button type="button" class="btn btn-danger" onclick="removeBookmark(${bookmark.pk})">🗑 Remove</button>
+                                                    <a role="button" class="btn btn-success" href="${bookmark.fields.link}">🏬 Go to Store Page</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>`;
+                });
+            }
+            document.getElementById("bookmarks").innerHTML = htmlBookmarks
+        }
+
+        async function refreshReview() {
+            const reviews = await fetch("{% url 'shopping:show_review_json' %}").then((response) => response.json());
+            
+            let htmlReview = '';
+            if (reviews.length == 0) {
+                htmlReview += `<h5 style="text-align: center; color: lightgray;">Seems like no one has made any reviews...</h5>`;
+            } else {
+                reviews.forEach((review) => {
+                    
+                    htmlReview += `<div class="card mx-2 my-3" style="max-width:90%;">
+                                        <div class="card-header text-center">
+                                            <h5 class="card-title mt-2">${review.fields.item}</h5>
+                                            <h3 class="card-title">${"★".repeat(review.fields.rating)}${"☆".repeat(5 - review.fields.rating)}</h3>
+                                            <p class="card-text mb-3">Reviewed by ${review.fields.user}</p>
+                                        </div>
+                                        <div class="card-body text-center">
+                                            <p class="card-text">"${review.fields.comment}"</p>
+                                        </div>
+                                    </div>`;
+                });
+            }
+            document.getElementById("review").innerHTML = htmlReview
+        }
+
+        function bookmarkItem(id) {
+            fetch(`/shopping/bookmark/${id}`, {method: "POST", headers: {"X-CSRFToken": "{{csrf_token}}" }}).then(refreshBookmarks);
+            alert("Item has been bookmarked!")
+            return false;
+        }
+
+        function removeBookmark(id) {
+            fetch(`/shopping/remove-bookmark/${id}`, {method: "DELETE", headers: {"X-CSRFToken": "{{csrf_token}}" }}).then(refreshBookmarks);
+            alert("Bookmark has been removed!")
+            return false;
+        }
+
+        function makeReview(id) {
+            fetch(`/shopping/review/${id}`, {method: "POST", body: new FormData(document.querySelector(`#reviewForm${id}`)), headers: {"X-CSRFToken": "{{csrf_token}}" }});
+            document.getElementById(`reviewForm${id}`).reset();
+            alert("Thank you for reviewing this product!")
+            return false;
+        }
+
+    </script>
 </head>
 
 {% endblock meta %}
 
 {% block content %}
+<nav class="navbar navbar-expand-lg" style="background-color: #476f4d;">
+    <div class="container-fluid" >
+      <a class="navbar-brand" href="{% url 'home:show_homepage' %}">
+        <img src="" class="rounded-circle img-fluid" style="width: 60px;">
+        PlasTIX</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 px-10">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'shopping:show_shop' %}">Shopping</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'profilepage:show_profile' %}">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'news:show_news' %}">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'redeem:show_redeem' %}">Redeem</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'recycle:show_recycle' %}">Recycle</a>
+          </li>
+        </ul>
+          <a class="btn btn-dark btn-lg" href="{% url 'home:logout_user' %}">Logout</a>
+      </div>
+    </div>
+  </nav>
 
-<body>
-    This is the shopping page.
+<body onload="refreshItems();refreshVendors();refreshReview();">
+    {% if user.is_authenticated %}
+        <button class="btn btn-success my-2 mx-2" data-bs-toggle="modal" data-bs-target="#bookmarksModal" onclick="refreshBookmarks()">≡ Bookmarks</button>
+
+        <div class="modal fade" id="bookmarksModal" tabindex="-1" aria-labelledby="bookmarksModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-success">
+                        <h1 class="modal-title fs-5 text-white" id="bookmarksModalLabel">Bookmarks</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div id="bookmarks" class="modal-body justify-content-center"></div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <h1 class="my-2" style="text-align: center;">Welcome to the shopping page</h1>
+    
+    <div class="text-center">
+        <h2 class="mt-4 mb-2" style="text-align: center;">Check out these recommendations!</h2>
+        <button class="btn btn-success" onclick="refreshItems()">⟳ Refresh</button>
+    </div>
+    <div id="items" class="d-flex justify-content-center mt-4 mb-5" style="flex-wrap: wrap; "></div>
+
+    <div class="text-center">
+        <h2 class="mt-4 mb-2" style="text-align: center;">Check out these vendors!</h2>
+        <button class="btn btn-success" onclick="refreshVendors()">⟳ Refresh</button>
+    </div>
+    <div id="vendors" class="d-flex justify-content-center mt-4 mb-5" style="flex-wrap: wrap; "></div>
+    
+    <div class="text-center">
+        <h2 class="mt-4 mb-2" style="text-align: center;">Highlighted Review</h2>
+    </div>
+    <div id="review" class="d-flex justify-content-center mt-4 mb-5" style="flex-wrap: wrap; "></div>
 </body>
 
 {% endblock content %}

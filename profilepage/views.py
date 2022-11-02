@@ -7,6 +7,7 @@ from .models import Profile
 from django.http import HttpResponseRedirect, JsonResponse
 from home.models import User
 from django.core.files.storage import FileSystemStorage
+from recycle.models import RecycleHistory
 
 # Create your views here.
 def show_profile(request):
