@@ -9,7 +9,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
 
-    <!-- ===== Fontawesome CDN Link ===== -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -23,7 +22,8 @@
     <link rel="stylesheet" href="static/css/style.css">
 
     <title>Redeem Points</title>
-    <script src="static/js/slider.js"></script> 
+    {% load static %}
+   <script src="{%static 'js/slider.js'%}"></script> 
 
 </head>
 
@@ -37,14 +37,18 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="page-content">
-    <!-- ***** Banner Start ***** -->
             <div class="main-banner">
 
                 <div class="row">
                     <div class="col-lg-7">
                         <div class="header-text">
-                            <h6>Get your special voucher right now!</h6>
-                            <h4><em>Hey, {{.usname}} </em> You have {{.poin}}</h4>
+                            <h6><em>Get your special voucher right now!</em></h6>
+                            {%if user.is_authenticated%}
+                            <h4><em>Welcome, {{user.get_username}}</em> </h4>
+                            {% else %}
+                            <h4>Redeem now!</h4>
+
+                            {% endif %}
                             <div class="main-button">
                             <a href="#section1">Redeem Now</a>
                             </div>
@@ -134,6 +138,20 @@
         </div>
     </section>
 
+    <section class="section1">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1> Let us know!</h1>
+                <h3> apakah kamu tidak menemukan voucher favoritmu? Tolong beritahu kami</h3>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#letModal">Beri tahu kami!</button>
+
+            </div>
+        </div>
+
+
+
+    </section>
+    <!-- INI KODE CONTACT US BUAT LANDING PAGE -->
     <div class="container-fluid rounded">
         <div class="row px-5">
             <div class="col-sm-6">
@@ -141,12 +159,6 @@
                     <h3 class="text-white">Contact us!</h3>
                     <p class="text-secondary">Fill up the form and our Team will get back to you within in 24 hours</p>
                 </div>
-                <div class="links" id="bordering">
-                    <a href="#" class="btn rounded text-white p-3"><i class="fa fa-phone icon text-primary pr-2"></i>+0123 4567 8910</a> 
-                    <a href="#" class="btn rounded text-white p-3"><i class="fa fa-envelope icon text-primary pr-3"></i>hello@flowbase.com</a> 
-                    <a href="#" class="btn rounded text-white p-3"><i class="fa fa-map-marker icon text-primary pr-3"></i>102 street 2714 Don</a> 
-                </div>
-
             </div>
             <div class="col-sm-6 pad">
                 <form class="rounded msg-form">
@@ -163,17 +175,14 @@
                         </div>
                     </div>
                     <div class="form-group"> <label for="msg" class="h6">Message</label> <textarea name="message" id="msgus" cols="10" rows="5" class="form-control" placeholder="Message"></textarea> </div>
-                    <div class="form-group d-flex justify-content-end"> <input type="submit" class="btn btn-primary text-white" value="send message"> </div>
+                    <div class="form-group d-flex justify-content-end"> <input type="submit" class="btn btn-success text-white" value="send message"> </div>
                 </form>
             </div>
         </div>
     </div>
-    <!-- <div class="container"> -->
+    
+<!-- INI KODE CONTACT US BUAT LANDING PAGE -->
 
-    <!-- </div>
-    <div class="d-flex" id="pulsa"></div>
-    <div class="d-flex" id="merchant"></div> -->
-    <!-- Button trigger modal -->
 
 <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -215,6 +224,36 @@
             </div>
         </div>
     </div>
+    
+    </div>
+    <div class="modal fade" id="letModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" style="width:500px">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="formvoucher">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">voucher favoritmu:</label>
+                  <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">mengapa?:</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Send message</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -226,7 +265,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
     <script>
-        // function get_card() {
             let voucher = "";
             $.ajax({
                 url: "{% url 'redeem:show_json' %}",
@@ -252,7 +290,12 @@
                                         <h5>🪙${i.fields.harga_poin}</h5>
                                         <h6>${i.fields.deskripsi}</h6>
 
-                                        <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#exampleModal"> redeem now </button>
+                                        {%if user.is_authenticated%}
+                                        <button type="button" class="btn btn-outline-light clr" data-toggle="modal" data-target="#exampleModal"> redeem now </button>
+                                        {% else %}
+                                        <a class="btn" href=/login>Redeem Now</a>
+                                        {% endif %}
+
                                     </div>
                                     </div>
                                     </div>
@@ -272,8 +315,12 @@
                                         <h4>${i.fields.title_voucher}</h4>
                                         <h5>🪙${i.fields.harga_poin}</h5>
                                         <h6>${i.fields.deskripsi}</h6>
+                                        {%if user.is_authenticated%}
+                                        <button type="button" class="btn btn-outline-light clr" data-toggle="modal" data-target="#exampleModal"> redeem now </button>
+                                        {% else %}
+                                        <a class="btn" href=/login>Redeem Now</a>
+                                        {% endif %}
 
-                                        <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#exampleModal"> redeem now </button>
                                     </div>
                                     </div>
                                     </div>
@@ -281,6 +328,7 @@
                                 $('#pulsa').html(voucher)
                             }
                         }
+                        
                         voucher ='';
                         title_voucher='';
                         for (i of data){
@@ -294,8 +342,11 @@
                                         <h4>${i.fields.title_voucher}</h4>
                                         <h5>🪙${i.fields.harga_poin}</h5>
                                         <h6>${i.fields.deskripsi}</h6>
-
-                                        <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#exampleModal"> redeem now </button>
+                                        {%if user.is_authenticated%}
+                                        <button type="button" class="btn btn-outline-light clr" data-toggle="modal" data-target="#exampleModal"> redeem now </button>
+                                        {% else %}
+                                        <a class="btn" href=/login>Redeem Now</a>
+                                        {% endif %}
                                     </div>
                                     </div>
                                     </div>
@@ -309,7 +360,17 @@
                     console.log('Error')
                 }
             })
-        // }
+            
+    </script>
+    <script>
+         $(document).on("submit", function(e) {
+            e.preventDefault();
+            $.ajax ({
+                url: "{% url 'redeem:request_voucher' %}",
+                type: "POST",
+                body: new FormData(document.querySelector(formvoucher))
+            })
+        })
     </script>
     
     {% endblock content %}

@@ -5,5 +5,8 @@ class Voucher(models.Model):
     title_voucher =  models.TextField()
     harga_poin = models.IntegerField()
     deskripsi = models.TextField()
+
     
-# Create your models here.
+class Newvoucher(models.Model):
+    nama_voucher_baru = models.TextField()
+    desc_voucher_baru = models.TextField()
