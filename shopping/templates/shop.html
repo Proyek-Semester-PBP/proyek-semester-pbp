@@ -104,6 +104,29 @@
                                             <h2 class="modal-title mt-2 mb-1">Rp${item.fields.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ".")}</h2>
                                         </div>
                                         <div class="flex modal-body border-top" style="white-space: pre-wrap;"><p class="modal-text">${item.fields.description}</p></div>
+                                        {% if user.is_authenticated %}
+                                        <div class="flex modal-body border-top">
+                                            <h5>Give this product a review!</h5>
+                                            <form id="reviewForm${item.pk}" onsubmit="return false;">
+                                                {% csrf_token %}
+                                                <div class="form-group my-3">
+                                                    <label>Rating</label>
+                                                    <select class="form-control" name="rating" required>
+                                                        <option value="1">1 Star - Poor</option>
+                                                        <option value="2">2 Stars - Mediocre</option>
+                                                        <option value="3">3 Stars - Good</option>
+                                                        <option value="4">4 Stars - Great</option>
+                                                        <option value="5">5 Stars - Amazing!</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group my-3">
+                                                    <label>Comment</label>
+                                                    <textarea class="form-control" name="comment" placeholder="Comment" rows="3" required></textarea>
+                                                </div>
+                                                <button type="submit" name="submit" class="btn btn-success" onclick="makeReview(${item.pk})">Submit</button>
+                                            </form>
+                                        </div>
+                                        {% endif %}
                                         <div class="modal-footer justify-content-center">
                                             {% if user.is_authenticated %}
                                                 <button type="button" class="btn btn-secondary" onclick="bookmarkItem(${item.pk})">📑 Bookmark item</button>
@@ -165,6 +188,30 @@
             document.getElementById("bookmarks").innerHTML = htmlBookmarks
         }
 
+        async function refreshReview() {
+            const reviews = await fetch("{% url 'shopping:show_review_json' %}").then((response) => response.json());
+            
+            let htmlReview = '';
+            if (reviews.length == 0) {
+                htmlReview += `<h5 style="text-align: center; color: lightgray;">Seems like no one has made any reviews...</h5>`;
+            } else {
+                reviews.forEach((review) => {
+                    
+                    htmlReview += `<div class="card mx-2 my-3" style="max-width:90%;">
+                                        <div class="card-header text-center">
+                                            <h5 class="card-title mt-2">${review.fields.item}</h5>
+                                            <h3 class="card-title">${"★".repeat(review.fields.rating)}${"☆".repeat(5 - review.fields.rating)}</h3>
+                                            <p class="card-text mb-3">Reviewed by ${review.fields.user}</p>
+                                        </div>
+                                        <div class="card-body text-center">
+                                            <p class="card-text">"${review.fields.comment}"</p>
+                                        </div>
+                                    </div>`;
+                });
+            }
+            document.getElementById("review").innerHTML = htmlReview
+        }
+
         function bookmarkItem(id) {
             fetch(`/shopping/bookmark/${id}`, {method: "POST", headers: {"X-CSRFToken": "{{csrf_token}}" }}).then(refreshBookmarks);
             alert("Item has been bookmarked!")
@@ -177,6 +224,13 @@
             return false;
         }
 
+        function makeReview(id) {
+            fetch(`/shopping/review/${id}`, {method: "POST", body: new FormData(document.querySelector(`#reviewForm${id}`)), headers: {"X-CSRFToken": "{{csrf_token}}" }});
+            document.getElementById(`reviewForm${id}`).reset();
+            alert("Thank you for reviewing this product!")
+            return false;
+        }
+
     </script>
 </head>
 
@@ -184,41 +238,7 @@
 
 {% block content %}
 
-<body onload="refreshItems();refreshVendors();">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
-        <a class="navbar-brand" href="{% url 'home:show_homepage' %}">PlasTIX</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavPlastix" aria-controls="navbarNavPlastix" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavPlastix">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" href="{% url 'profilepage:show_profile' %}">Profile</a>
-                <a class="nav-item nav-link" href="{% url 'redeem:show_redeem' %}">Redeem</a>
-                <a class="nav-item nav-link" href="{% url 'recycle:show_recycle' %}">Recycle</a>
-                <a class="nav-item nav-link active" href="{% url 'shopping:show_shop' %}">Shopping</a>
-                <a class="nav-item nav-link" href="{% url 'news:show_news' %}">News</a>
-            </div>
-        </div>
-    </nav>
-
-
-
-    <h1 class="my-2" style="text-align: center;">This is the shopping page.</h1>
-    
-    <div class="text-center">
-        <h2 class="mt-4 mb-2" style="text-align: center;">Check out these recommendations!</h2>
-        <button class="btn btn-success" onclick="refreshItems()">⟳ Refresh</button>
-    </div>
-    <div id="items" class="d-flex justify-content-center mt-4 mb-5" style="flex-wrap: wrap; "></div>
-
-    <div class="text-center">
-        <h2 class="mt-4 mb-2" style="text-align: center;">Check out these vendors!</h2>
-        <button class="btn btn-success" onclick="refreshVendors()">⟳ Refresh</button>
-    </div>
-    <div id="vendors" class="d-flex justify-content-center mt-4 mb-5" style="flex-wrap: wrap; "></div>
-
-
-
+<body onload="refreshItems();refreshVendors();refreshReview();">
     {% if user.is_authenticated %}
         <button class="btn btn-success my-2 mx-2" data-bs-toggle="modal" data-bs-target="#bookmarksModal" onclick="refreshBookmarks()">≡ Bookmarks</button>
 
@@ -234,6 +254,25 @@
             </div>
         </div>
     {% endif %}
+
+    <h1 class="my-2" style="text-align: center;">Welcome to the shopping page</h1>
+    
+    <div class="text-center">
+        <h2 class="mt-4 mb-2" style="text-align: center;">Check out these recommendations!</h2>
+        <button class="btn btn-success" onclick="refreshItems()">⟳ Refresh</button>
+    </div>
+    <div id="items" class="d-flex justify-content-center mt-4 mb-5" style="flex-wrap: wrap; "></div>
+
+    <div class="text-center">
+        <h2 class="mt-4 mb-2" style="text-align: center;">Check out these vendors!</h2>
+        <button class="btn btn-success" onclick="refreshVendors()">⟳ Refresh</button>
+    </div>
+    <div id="vendors" class="d-flex justify-content-center mt-4 mb-5" style="flex-wrap: wrap; "></div>
+    
+    <div class="text-center">
+        <h2 class="mt-4 mb-2" style="text-align: center;">Highlighted Review</h2>
+    </div>
+    <div id="review" class="d-flex justify-content-center mt-4 mb-5" style="flex-wrap: wrap; "></div>
 </body>
 
 {% endblock content %}

@@ -21,3 +21,12 @@ class RecommendedVendor(models.Model):
 
     def __str__(self):
         return self.name
+
+class Review(models.Model):
+    item = models.CharField(max_length=150)
+    user = models.CharField(max_length=150)
+    rating = models.IntegerField()
+    comment = models.TextField()
+
+    def __str__(self):
+        return self.item + ", " + self.user
