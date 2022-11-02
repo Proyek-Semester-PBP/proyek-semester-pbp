@@ -11,7 +11,6 @@ from django.contrib import messages
 from recycle.models import RecycleHistory
 
 # Create your views here.
-@login_required(login_url='/login/')
 def show_homepage(request):
     return render(request, "home.html")
 
