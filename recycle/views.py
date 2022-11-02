@@ -72,9 +72,9 @@ def add_history(request):
             description=description,
         )
         new_history.save()
-        # temp = Profile.objects.get(user=request.user)
-        # temp.weight += (int(weight))
-        # temp.point += (int(weight) * 5)
-        # temp.save()
+        temp = Profile.objects.get(user=request.user)
+        temp.weight += (int(weight))
+        temp.point += (int(weight) * 5)
+        temp.save()
         return HttpResponse('')
     return redirect('recycle:show_recycle')

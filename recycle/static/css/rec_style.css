@@ -35,7 +35,7 @@ input, textarea {
 
 .left {
     width: 50%;
-    height: 830px;
+    height: fit-content;
     display: flex;
     align-items: center;
 }
@@ -46,11 +46,14 @@ input, textarea {
 
 .right {
     width: 50%;
-    height: 830px;
+    display: flex;
+    align-items: center;
 }
 
 .baris {
     margin: 60px;
+    display: flex;
+    align-items: center;
 }
 
 /* Clear floats after the columns */
@@ -71,17 +74,3 @@ input, textarea {
     padding-right: 0px;
   }
 }
-
-table.roundedCorners { 
-  border: 1px solid DarkOrange;
-  border-radius: 13px; 
-  border-spacing: 0;
-  }
-table.roundedCorners td, 
-table.roundedCorners th { 
-  border-bottom: 1px solid DarkOrange;
-  padding: 10px; 
-  }
-table.roundedCorners tr:last-child > td {
-  border-bottom: none;
-}     
