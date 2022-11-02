@@ -16,10 +16,11 @@
 
 .about-us h1 {
   font-family: 'Times New Roman', Times, serif;
-  color: #4ecd31;
+  color: darkgreen;
+
 }
 body{
- background-color: #dc143c22; 
+ background-color: #b8cca2;
 }
 
 .container{
@@ -33,7 +34,7 @@ body{
   font-size: 40px;
   margin-bottom: 20px;
   font-family: 'Times New Roman', Times, serif;
-  color: #46c729;
+  color: darkgreen;
 }
 
 .container .box-container{
@@ -43,7 +44,7 @@ body{
 }
 
 .container .box-container .box{
-  background-color: #fff;
+  background-color: #E6E6B3;
   padding:20px;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0,0,0,.2);
@@ -75,26 +76,28 @@ body{
 
 .container .box-container .box .content h3{
   font-size: 20px;
-  color:#334;
+  color: darkgreen;
 }
 
 .container .box-container .box .content p{
   font-size: 15px;
-  color:#777;
+  color: #6BB071;
   line-height: 2;
   padding:15px 0;
 }
 
 .container .box-container .box .content .btn{
+  background-color: green;
+
   display: inline-block;
   padding:10px 30px;
   border:1px solid #334;
-  color:#334;
+  color:#CCCC9A;
   font-size: 16px;
 }
 
 .container .box-container .box .content .btn:hover{
-  background-color: rgb(96, 158, 24);
+  background-color: green;
   border-color: rgb(20, 220, 107);
   color:#fff;
 }
@@ -114,7 +117,7 @@ body{
 }
 
 .container .box-container .box .content .icons span i{
-  color:crimson;
+  color:green;
   padding-right: 5px;
 }
 
@@ -123,14 +126,14 @@ body{
   display: inline-block;
   padding:13px 30px;
   border:1px solid #334;
-  color:#334;
+  color:#CCCC9A;
   font-size: 16px;
-  background-color: #fff;
+  background-color: green;
   cursor: pointer;
 }
 
 #load-more:hover{
-  background-color: rgb(47, 155, 39);
+  background-color: rgb(7, 144, 7);
   border-color: rgb(20, 220, 163);
   color:#fff;
 }
@@ -177,7 +180,7 @@ html {
   padding: 50px;
   text-align: center;
   background-color: #474e5d;
-  color: white;
+  color: #CCCC9A;
 }
 
 @media screen and (max-width: 650px) {
