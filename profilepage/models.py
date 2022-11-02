@@ -3,8 +3,6 @@ from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User 
 
-
-
 # Create your models here.
 class Profile(models.Model):
     user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, default = 0)
@@ -18,4 +16,3 @@ class Profile(models.Model):
     point = models.BigIntegerField(default = 0)
     weight = models.BigIntegerField(default=0)
     profpic = models.ImageField(null = True, upload_to = 'pics/', blank = True)
-

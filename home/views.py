@@ -4,14 +4,11 @@ from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-<<<<<<< HEAD
-=======
 from .models import User
 from profilepage.models import Profile
 from .forms import CustomUserCreationForm  
 from django.contrib import messages
 from recycle.models import RecycleHistory
->>>>>>> alvaro
 
 # Create your views here.
 @login_required(login_url='/login/')
@@ -25,33 +22,16 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-<<<<<<< HEAD
-            response = HttpResponseRedirect(reverse('home:show_homepage'))
-            return response
-=======
             NewProfile(user)
             response = HttpResponseRedirect(reverse('home:show_homepage'))
             return response
         else:
             messages.info(request, 'Username or Password is incorrect!')
->>>>>>> alvaro
 
     context = {}
     return render(request, 'login.html', context)
 
 def register(request):
-<<<<<<< HEAD
-    form = UserCreationForm()
-
-    if request.method == "POST":
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home:login_user')
-    
-    context = {'form':form}
-    return render(request, 'register.html', context)
-=======
     form = CustomUserCreationForm()
     if request.method == 'POST':  
         form = CustomUserCreationForm(request.POST)  
@@ -62,14 +42,11 @@ def register(request):
         
     context = {'form':form }
     return render(request, 'register.html', context)  
->>>>>>> alvaro
 
 def logout_user(request):
     logout(request)
     response = HttpResponseRedirect(reverse('home:show_homepage'))
     return response
-<<<<<<< HEAD
-=======
 
 def NewProfile(user):
     try:
@@ -80,4 +57,3 @@ def NewProfile(user):
         return Profile.objects.create(user=user, name="-", email="-", mobile="-", github="-", instagram="-", twitter="-", facebook="-", point = 0, weight = 0, profpic = url)
         
     
->>>>>>> alvaro
