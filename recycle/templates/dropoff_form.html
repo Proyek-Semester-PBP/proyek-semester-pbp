@@ -1,50 +1,15 @@
 {% extends 'base.html' %}
 
+{% load static %}
 {% block meta %}
 <title>Drop Off</title>
+<script src= "https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
+<script src="{% static 'js/dropoff.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/recycle_style.css' %}">
+
 {% endblock meta %}
 
 {% block content %}
-
-<style>
-    input, textarea {
-        padding: 0.5rem;
-        border: 1px solid;
-        border-radius: 8px;
-        width: 100%
-    }
-</style>
-
-
-<script>
-    function posting(e) {
-      e.preventDefault()
-      const name = $("#id_name").val()
-      const weight = $("#id_weight").val()
-      const location = $("input[type='radio']:checked").val()
-      const description = $("#id_description").val()
-
-      const data = {
-        type: "dropoff",
-        name: name,
-        weight: weight,
-        location: location,
-        description: description,
-        csrfmiddlewaretoken: "{{ csrf_token }}"
-      }
-      
-      $.ajax({
-        type: 'POST',
-        url: '{% url "recycle:add_history" %}',
-        data: data,
-      });
-
-    }
-
-    $(document).ready(() => {
-      $("#dropoff-btn").click(posting)
-    })
-</script>
 
 <div class="position-relative mx-auto container flex flex-col gap-4 pt-8" style="margin-top: 15px; text-align: center">
     <div class ="rounded-lg p-4 flex flex-col gap-4 mx-auto bg-base-100;" >

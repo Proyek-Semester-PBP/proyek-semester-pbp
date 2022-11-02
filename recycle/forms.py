@@ -17,10 +17,10 @@ class DropOffForm(forms.ModelForm):
         model = RecycleHistory
         fields = ('name', 'weight', 'location', 'description') 
         widgets = {
-            'name': forms.TextInput(attrs={'placeholder': 'Enter your name'}),
-            'weight': forms.NumberInput(attrs={'placeholder': 'Enter the plastic weight'}),
+            'name': forms.TextInput(attrs={'placeholder': 'Enter your name', 'id':'name_drop'}),
+            'weight': forms.NumberInput(attrs={'placeholder': 'Enter the plastic weight', 'id':'weight_drop'}),
             'location': forms.RadioSelect(choices=dropoff_choices),
-            'description': forms.Textarea(attrs={'placeholder': 'Tell us your experience with PlasTIX'})
+            'description': forms.Textarea(attrs={'placeholder': 'Tell us your experience with PlasTIX', 'id':'desc_drop'})
         }
     
 class PickUpForm(forms.ModelForm):
@@ -28,19 +28,19 @@ class PickUpForm(forms.ModelForm):
         model = RecycleHistory
         fields = ('name', 'weight', 'description')
         widgets = {
-            'name': forms.TextInput(attrs={'placeholder': 'Enter your name'}),
-            'weight': forms.NumberInput(attrs={'placeholder': 'Enter the plastic weight'}),
-            'description': forms.Textarea(attrs={'placeholder': 'Tell us your experience with PlasTIX'})
+            'name': forms.TextInput(attrs={'placeholder': 'Enter your name', 'id':'name_pickup'}),
+            'weight': forms.NumberInput(attrs={'placeholder': 'Enter the plastic weight', 'id':'weight_pickup'}),
+            'description': forms.Textarea(attrs={'placeholder': 'Tell us your experience with PlasTIX', 'id':'desc_pickup'})
         }
     
     region = forms.CharField(label="Region", 
-                            widget=forms.TextInput(attrs={'placeholder': 'Jawa Barat'}))
+                            widget=forms.TextInput(attrs={'placeholder': 'Jawa Barat', 'id':'reg_pickup'}))
     city = forms.CharField(label="City", 
-                            widget=forms.TextInput(attrs={'placeholder': 'Bogor'}))
+                            widget=forms.TextInput(attrs={'placeholder': 'Bogor', 'id':'city_pickup'}))
     subdistrict = forms.CharField(label="Subdistrict", 
-                                widget=forms.TextInput(attrs={'placeholder': 'Cileungsi'}))
+                                widget=forms.TextInput(attrs={'placeholder': 'Cileungsi', 'id':'sub_pickup'}))
     zip_code = forms.IntegerField(label="ZIP Code", 
-                                widget=forms.NumberInput(attrs={'placeholder': '12345'}))
+                                widget=forms.NumberInput(attrs={'placeholder': '12345', 'id':'zip_pickup'}))
     address_detail = forms.CharField(label="Details",
-                                    widget=forms.TextInput(attrs={'placeholder': 'Street Name, Building Number'}))
+                                    widget=forms.TextInput(attrs={'placeholder': 'Street Name, Building Number', 'id':'addr_pickup'}))
    

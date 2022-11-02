@@ -6,10 +6,27 @@ from recycle.models import RecycleHistory
 from recycle.forms import PickUpForm
 from recycle.forms import DropOffForm
 from django.contrib.auth.decorators import login_required
+from profilepage.models import Profile
+
+def show_dumb(request):
+    dropoff_form = DropOffForm()
+    pickup_form = PickUpForm()
+    context = {
+        "dropoff_form" : dropoff_form,
+        "pickup_form" : pickup_form
+    }
+    return render(request, "recycle2.html", context)
+
 
 # Create your views here.
 def show_recycle(request):
-    return render(request, "recycle.html")
+    dropoff_form = DropOffForm()
+    pickup_form = PickUpForm()
+    context = {
+        "dropoff_form" : dropoff_form,
+        "pickup_form" : pickup_form
+    }
+    return render(request, "recycle.html", context)
 
 @login_required(login_url='/login/')
 def create_pickup(request):
@@ -55,4 +72,8 @@ def add_history(request):
             description=description,
         )
         new_history.save()
+        # temp = Profile.objects.get(user=request.user)
+        # temp.weight += (int(weight))
+        # temp.point += (int(weight) * 5)
+        # temp.save()
     return redirect('recycle:show_recycle')
