@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="static/css/style.css">
 
     <title>Redeem Points</title>
+
     {% load static %}
    <script src="{%static 'js/slider.js'%}"></script> 
 
@@ -140,10 +141,10 @@
 
     <section class="section1">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12" style="color: #014923;">
                 <h1> Let us know!</h1>
-                <h3> Apakah kamu tidak menemukan voucher favoritmu? Maukah kamu memberitahu agar kedepannya kamu dapat mendapatkan voucher melalui kami.</h3>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#letModal">Beri tahu kami!</button>
+                <h5> Apakah kamu tidak menemukan voucher favoritmu? Maukah kamu memberitahu kami?.</h5>
+                <button  class="btn btn-success"><a data-toggle="modal" data-target="#letModal">Beri tahu kami!</a></button>
 
             </div>
         </div>
@@ -151,39 +152,6 @@
 
 
     </section>
-    <!-- INI KODE CONTACT US BUAT LANDING PAGE -->
-    <div class="container-fluid rounded">
-        <div class="row px-5">
-            <div class="col-sm-6">
-                <div>
-                    <h3 class="text-white">Contact us!</h3>
-                    <p class="text-secondary">Fill up the form and our Team will get back to you within in 24 hours</p>
-                </div>
-            </div>
-            <div class="col-sm-6 pad">
-                <form class="rounded msg-form">
-                    <div class="form-group"> <label for="name" class="h6">Your Name</label>
-                        <div class="input-group border rounded">
-                            <div class="input-group-addon px-2 pt-1">
-                                <p class="fa fa-user-o text-primary"></p>
-                            </div> <input type="text" class="form-control border-0">
-                        </div>
-                    </div>
-                    <div class="form-group"> <label for="name" class="h6">Email</label>
-                        <div class="input-group border rounded">
-                            <div class="input-group-addon px-2 pt-1"> <i class="fa fa-envelope text-primary"></i> </div> <input type="text" class="form-control border-0">
-                        </div>
-                    </div>
-                    <div class="form-group"> <label for="msg" class="h6">Message</label> <textarea name="message" id="msgus" cols="10" rows="5" class="form-control" placeholder="Message"></textarea> </div>
-                    <div class="form-group d-flex justify-content-end"> <input type="submit" class="btn btn-success text-white" value="send message"> </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    
-<!-- INI KODE CONTACT US BUAT LANDING PAGE -->
-
-
 <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -226,34 +194,30 @@
     </div>
     
     </div>
-    <div class="modal fade" id="letModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content" style="width:500px">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form id="formvoucher">
-                <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">voucher favoritmu:</label>
-                  <input type="text" class="form-control" id="recipient-name">
+    <form action="" method="POST" id="modalsat">  
+        {% csrf_token %}  
+        <table>  
+            <div class="modal fade" id="letModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="ModalLabel">Let us know</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input class="form-control" type="text" placeholder="merchant favoritemu" name="title"  aria-label="voucher favorit:" >
+                        <br>
+                        <input class="form-control" type="text"  name="description" placeholder="Description" aria-label="Description">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" id="createBtn">Send message</button>
+                    </div>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label for="message-text" class="col-form-label">mengapa?:</label>
-                  <textarea class="form-control" id="message-text"></textarea>
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Send message</button>
-            </div>
-          </div>
-        </div>
-      </div>
+              </div>
+        </table>
+    </form>
 
     <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -363,14 +327,118 @@
             
     </script>
     <script>
-         $(document).on("submit", function(e) {
+         $(document).on("submit",function(e) {
             e.preventDefault();
             $.ajax ({
                 url: "{% url 'redeem:request_voucher' %}",
                 type: "POST",
-                body: new FormData(document.querySelector(formvoucher))
+                body: new FormData(document.querySelector("#modalsat"))
             })
+            $("formvoucher")[0].reset()
         })
     </script>
+    <script>
+        $(document).ready(function () {
+    var itemsMainDiv = ('.MultiCarousel');
+    var itemsDiv = ('.MultiCarousel-inner');
+    var itemWidth = "";
+
+    $('.leftLst, .rightLst').click(function () {
+        var condition = $(this).hasClass("leftLst");
+        if (condition)
+            click(0, this);
+        else
+            click(1, this)
+    });
+
+    ResCarouselSize();
+
+    $(window).resize(function () {
+        ResCarouselSize();
+    });
+
+    //this function define the size of the items
+    function ResCarouselSize() {
+        var incno = 0;
+        var dataItems = ("data-items");
+        var itemClass = ('.item');
+        var id = 0;
+        var btnParentSb = '';
+        var itemsSplit = '';
+        var sampwidth = $(itemsMainDiv).width();
+        var bodyWidth = $('body').width();
+        $(itemsDiv).each(function () {
+            id = id + 1;
+            var itemNumbers = $(this).find(itemClass).length;
+            btnParentSb = $(this).parent().attr(dataItems);
+            itemsSplit = btnParentSb.split(',');
+            $(this).parent().attr("id", "MultiCarousel" + id);
+
+
+            if (bodyWidth >= 1200) {
+                incno = itemsSplit[3];
+                itemWidth = sampwidth / incno;
+            }
+            else if (bodyWidth >= 992) {
+                incno = itemsSplit[2];
+                itemWidth = sampwidth / incno;
+            }
+            else if (bodyWidth >= 768) {
+                incno = itemsSplit[1];
+                itemWidth = sampwidth / incno;
+            }
+            else {
+                incno = itemsSplit[0];
+                itemWidth = sampwidth / incno;
+            }
+            $(this).css({ 'transform': 'translateX(0px)', 'width': itemWidth * itemNumbers });
+            $(this).find(itemClass).each(function () {
+                $(this).outerWidth(itemWidth);
+            });
+
+            $(".leftLst").addClass("over");
+            $(".rightLst").removeClass("over");
+
+        });
+    }
+    //this function used to move the items
+    function ResCarousel(e, el, s) {
+        var leftBtn = ('.leftLst');
+        var rightBtn = ('.rightLst');
+        var translateXval = '';
+        var divStyle = $(el + ' ' + itemsDiv).css('transform');
+        var values = divStyle.match(/-?[\d\.]+/g);
+        var xds = Math.abs(values[4]);
+        if (e == 0) {
+            translateXval = parseInt(xds) - parseInt(itemWidth * s);
+            $(el + ' ' + rightBtn).removeClass("over");
+
+            if (translateXval <= itemWidth / 2) {
+                translateXval = 0;
+                $(el + ' ' + leftBtn).addClass("over");
+            }
+        }
+        else if (e == 1) {
+            var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
+            translateXval = parseInt(xds) + parseInt(itemWidth * s);
+            $(el + ' ' + leftBtn).removeClass("over");
+
+            if (translateXval >= itemsCondition - itemWidth / 2) {
+                translateXval = itemsCondition;
+                $(el + ' ' + rightBtn).addClass("over");
+            }
+        }
+        $(el + ' ' + itemsDiv).css('transform', 'translateX(' + -translateXval + 'px)');
+    }
+
+    //It is used to get some elements from btn
+    function click(ell, ee) {
+        var Parent = "#" + $(ee).parent().attr("id");
+        var slide = $(Parent).attr("data-slide");
+        ResCarousel(ell, Parent, slide);
+    }
+}); 
+    </script>
+    
     
     {% endblock content %}
