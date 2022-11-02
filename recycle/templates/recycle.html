@@ -1,17 +1,277 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block meta %}
 
-<head>
-    <title>Recycle</title>
-</head>
+<title>Recycle</title>
+
+<script src= "https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/mypickup.js' %}"></script>
+<script src="{% static 'js/drop_off.js' %}"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<style>
+    input, textarea {
+        padding: 0.5rem;
+        border: 1px solid;
+        border-radius: 8px;
+        width: 100%
+    }
+
+    iframe:hover {
+        transform: scale(1.1);
+        box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12)
+;
+    }
+
+    #dropoff-card {
+        box-shadow:
+  0 5px 5px rgba(58, 58, 57, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 40px 40px rgba(0, 0, 0, 0.12)
+;
+    }
+
+    .column {
+  float: left;
+  padding: 10px; /* Should be removed. Only for demonstration */
+}
+
+.left {
+    width: 50%;
+    height: 830px;
+    display: flex;
+    align-items: center;
+}
+
+.left img {
+    padding-right: 10px;
+}
+
+.right {
+    width: 50%;
+    height: 830px;
+}
+
+.baris {
+    margin: 60px;
+}
+
+/* Clear floats after the columns */
+.baris:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 900px) {
+  .column {
+    height: fit-content;
+    width: 100%;
+  }
+
+  .left img {
+    padding-right: 0px;
+  }
+}
+.navbar-nav > li{
+padding-left:30px;
+padding-right:30px;
+}
+
+.nav-item{
+font-size: 20px;
+color: #b7d6af;
+}
+
+.navbar-brand{
+font-size: 30px;
+font-weight: bold;
+}
+</style>
 
 {% endblock meta %}
 
 {% block content %}
 
 <body>
-    This is the recycling page.
-</body>
+    <nav class="navbar navbar-expand-lg" style="background-color: #476f4d;">
+        <div class="container-fluid" >
+          <a class="navbar-brand" href="{% url 'home:show_homepage' %}">
+            <img src="" class="rounded-circle img-fluid" style="width: 60px;">
+            PlasTIX</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 px-10">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'shopping:show_shop' %}">Shopping</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'profilepage:show_profile' %}">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'news:show_news' %}">News</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'redeem:show_redeem' %}">Redeem</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'recycle:show_recycle' %}">Recycle</a>
+              </li>
+            </ul>
+              <a class="btn btn-dark btn-lg" href="{% url 'home:logout_user' %}">Logout</a>
+          </div>
+        </div>
+      </nav>
 
+    
+    
+      <div style="text-align:center;">
+        <img src="{%static 'img/bg.png'%}" width="100%">
+    <p style="margin: 30px; ">
+        PlasTIX hadir untuk membantu kalian semua dalam melakukan daur ulang sampah plastik. Kami menyediakan 2 fitur, yaitu drop off dan pick up. Pada fitur drop off, kami menyediakan beberapa vending machine yang tersedia pada 8 lokasi yang ditampilkan di bawah. Sementara itu, untuk fitur drop off, kami menyediakan jasa penjemputan sampah plastik untuk kalian semua yang berada di daerah Jabodetabek.
+    </p>
+    <div id="dropoff-card" style="border-radius: 25px; background: #E4DEAE; margin: 60px; padding: 20px; color: #011B10;">
+
+    <div class="row row-cols-1 row-cols-md-3 g-4 md:justify-end gap-4" id="body-div" style="text-align: center; width: 100%; padding-top: 30px;">
+        <div class="location-card col-sm-4 mb-1 mt-4 mx-auto" style="width: 18rem;">
+            <div class="location-card-body">
+                <h4 class="location-card-title text-center fw-semibold">AEON Serpong</h4>
+                <p>Lantai 4 blok AB2</p>
+            </div>
+            <div class="location-card-footer text-center">
+                <iframe marginheight="0" marginwidth="0" frameborder="0" width="230" height="190" src="https://maps.google.com/maps?q=aeon%20serpong&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen="" style="overflow:hidden"></iframe>
+            </div>
+        </div>
+
+        <div class="location-card col-sm-4 mb-1 mt-4 mx-auto" style="width: 18rem;">
+            <div class="location-card-body">
+                <h4 class="location-card-title text-center fw-semibold">Botani Square</h4>
+                <p>Lantai GF blok C3</p>
+            </div>
+            <div class="location-card-footer text-center">
+                <iframe marginheight="0" marginwidth="0" frameborder="0" width="230" height="190" src="https://maps.google.com/maps?q=botani%20square&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen="" style="overflow:hidden"></iframe>
+            </div>
+        </div>
+
+        <div class="location-card col-sm-4 mb-1 mt-4 mx-auto" style="width: 18rem;">
+            <div class="location-card-body">
+                <h4 class="location-card-title text-center fw-semibold">Kota Kasablanka</h4>
+                <p>Lantai 1 blok C1</p>
+            </div>
+            <div class="location-card-footer text-center">
+                <iframe marginheight="0" marginwidth="0" frameborder="0" width="230" height="190" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63460.98992932518!2d106.77660253124995!3d-6.222544999999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f38cbb506e1d%3A0x8535b0d7f68b1198!2sMall%20Kota%20Kasablanka!5e0!3m2!1sen!2sus!4v1667231225764!5m2!1sen!2sus" allowfullscreen="" style="overflow:hidden"></iframe>  
+            </div>
+        </div>
+
+        <div class="location-card col-sm-4 mb-1 mt-4 mx-auto" style="width: 18rem;">
+            <div class="location-card-body">
+                <h4 class="location-card-title text-center fw-semibold">Margocity Depok</h4>
+                <p>Lantai 3 blok N12</p>
+            </div>
+            <div class="location-card-footer text-center">
+                <iframe marginheight="0" marginwidth="0" frameborder="0" width="230" height="190" src="https://maps.google.com/maps?q=margocity&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen="" style="overflow:hidden"></iframe>  
+            </div>
+        </div>
+
+        <div class="location-card col-sm-4 mb-1 mt-4 mx-auto" style="width: 18rem;">
+            <div class="location-card-body">
+                <h4 class="location-card-title text-center fw-semibold">Paris Van Java</h4>
+                <p>Lantai 6 blok AB3</p>
+            </div>
+            <div class="location-card-footer text-center">
+                <iframe marginheight="0" marginwidth="0" frameborder="0" width="230" height="190" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.0140570906538!2d107.5939271137927!3d-6.888919069323266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e6603f5b8f93%3A0x65b023128ec2b79a!2sParis%20Van%20Java%2C%20Jl.%20Sukajadi%20No.131-139%2C%20Cipedes%2C%20Kec.%20Sukajadi%2C%20Kota%20Bandung%2C%20Jawa%20Barat%2040162%2C%20Indonesia!5e0!3m2!1sen!2sus!4v1667231323060!5m2!1sen!2sus" allowfullscreen="" style="overflow:hidden"></iframe>    
+            </div>
+        </div>
+
+        <div class="location-card col-sm-4 mb-1 mt-4 mx-auto" style="width: 18rem;">
+            <div class="location-card-body">
+                <h4 class="location-card-title text-center fw-semibold">Plaza Indonesia</h4>
+                <p>Lantai GF blok C17</p>
+            </div>
+            <div class="location-card-footer text-center">
+                <iframe marginheight="0" marginwidth="0" frameborder="0" width="230" height="190" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15866.111540467442!2d106.80548670781248!3d-6.193859699999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f42108e6d503%3A0x7d7fe17ad64a053f!2sPlaza%20Indonesia!5e0!3m2!1sen!2sus!4v1667231405132!5m2!1sen!2sus" allowfullscreen="" style="overflow:hidden"></iframe>  
+            </div>
+        </div>
+
+        <div class="location-card col-sm-4 mb-1 mt-4 mx-auto" style="width: 18rem;">
+            <div class="location-card-body">
+                <h4 class="location-card-title text-center fw-semibold">Senayan City</h4>
+                <p>Lantai 2 blok AC22</p>
+            </div>
+            <div class="location-card-footer text-center">
+                <iframe marginheight="0" marginwidth="0" frameborder="0" width="230" height="190" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2803519411473!2d106.7956040137854!3d-6.226719462713085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f1485e476a65%3A0x300c043104acc004!2sSenayan%20City!5e0!3m2!1sen!2sus!4v1667231482933!5m2!1sen!2sus" allowfullscreen="" style="overflow:hidden"></iframe>    
+            </div>
+        </div>
+
+        <div class="location-card col-sm-4 mb-1 mt-4 mx-auto" style="width: 18rem;">
+            <div class="location-card-body">
+                <h4 class="location-card-title text-center fw-semibold">Summarecon Bekasi</h4>
+                <p>Lantai 1 blok C5</p>
+            </div>
+            <div class="location-card-footer text-center">
+                <iframe marginheight="0" marginwidth="0" frameborder="0" width="230" height="190" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2848622989345!2d106.99888771378538!3d-6.226122262707448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698c71cf814d97%3A0xd22a5d56809f070a!2sSummarecon%20Mall%20Bekasi!5e0!3m2!1sen!2sus!4v1667231537623!5m2!1sen!2sus" allowfullscreen="" style="overflow:hidden"></iframe>    
+            </div>
+        </div>
+    </div>
+    <br>
+    <a class="btn btn-success" href="{% url 'recycle:create_dropoff' %}" role="button">Click here when you're at our vending machine</a>
+    </div>
+
+
+    <div class="baris">
+        <div class="column left" style="text-align: center;">
+            <img src="{%static 'img/motor.gif'%}" width="70%">
+        </div>
+        <div class="column right" id="dropoff-card" style="border-radius: 25px; background: #E4DEAE; padding: 20px; color: #011B10;">
+            <div class="position-relative mx-auto container flex flex-col gap-4 pt-8" style="margin-top: 15px; text-align: center">
+                PlasTIX menyediakan fitur pick up. Kalian dapat mengklik button di bawah untuk memasukkan lokasi penjemputan Anda dan kami akan segera datang untuk menjemput.
+                <br><br>
+                <a class="btn btn-success" href="{% url 'recycle:create_pickup' %}" role="button">Pick Up</a>
+            </div>
+        </div>
+    </div>
+
+{% if user.is_authenticated %}
+<div>
+    <h3 style="margin-top:7px; color:#011b10" class="font-monospace fw-semibold text-center">Recycle History</h3>
+    <table style="margin:10px 0px 20px 20px; width:96%;"  class="table table-bordered">
+        <thead style="text-align:center" class="table-success">
+            <th>Name</th>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Weight</th>
+            <th>Description</th>
+        </thead>
+        <tbody id="history-table">
+
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div>
+
+</div>
+{% endif %}
+
+    
+
+</body>
 {% endblock content %}

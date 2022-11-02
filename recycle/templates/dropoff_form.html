@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block meta %}
+<title>Drop Off</title>
+<script src= "https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
+<script src="{% static 'js/dropoff.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/recycle_style.css' %}">
+
+{% endblock meta %}
+
+{% block content %}
+
+<div class="position-relative mx-auto container flex flex-col gap-4 pt-8" style="margin-top: 15px; text-align: center">
+    <div class ="rounded-lg p-4 flex flex-col gap-4 mx-auto bg-base-100;" >
+    
+        <h1 style="padding-bottom: 10px; font-size: 40px;" class="font-monospace fw-semibold text-center">Drop Off Form</h1>
+    
+        <form method="POST" action="" style="display: inline-block;">
+            {% csrf_token %}
+            <table>
+                {{ dropoff_form.as_table }}
+                <tr>
+                    <td colspan="2">
+                        <input style="width: 100%; margin-top: 20px; margin-bottom: 7px;" id="dropoff-btn" class="btn btn btn-dark" type="submit" value="Submit">
+                    </td>
+                </tr>
+            </table>
+        </form>
+       
+    </div>
+</div>
+
+{% endblock content %}
