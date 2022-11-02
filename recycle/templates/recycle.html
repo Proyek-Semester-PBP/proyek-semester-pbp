@@ -6,144 +6,16 @@
 <title>Recycle</title>
 
 <script src= "https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
+<link rel="stylesheet" href="{% static 'css/rec_style.css' %}">
 <script src="{% static 'js/script.js' %}"></script>
-<script src="{% static 'js/mypickup.js' %}"></script>
-<script src="{% static 'js/drop_off.js' %}"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<style>
-    input, textarea {
-        padding: 0.5rem;
-        border: 1px solid;
-        border-radius: 8px;
-        width: 100%
-    }
-
-    iframe:hover {
-        transform: scale(1.1);
-        box-shadow:
-  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-  0 12.5px 10px rgba(0, 0, 0, 0.06),
-  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-  0 100px 80px rgba(0, 0, 0, 0.12)
-;
-    }
-
-    #dropoff-card {
-        box-shadow:
-  0 5px 5px rgba(58, 58, 57, 0.034),
-  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-  0 12.5px 10px rgba(0, 0, 0, 0.06),
-  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-  0 40px 40px rgba(0, 0, 0, 0.12)
-;
-    }
-
-    .column {
-  float: left;
-  padding: 10px; /* Should be removed. Only for demonstration */
-}
-
-.left {
-    width: 50%;
-    height: 830px;
-    display: flex;
-    align-items: center;
-}
-
-.left img {
-    padding-right: 10px;
-}
-
-.right {
-    width: 50%;
-    height: 830px;
-}
-
-.baris {
-    margin: 60px;
-}
-
-/* Clear floats after the columns */
-.baris:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 900px) {
-  .column {
-    height: fit-content;
-    width: 100%;
-  }
-
-  .left img {
-    padding-right: 0px;
-  }
-}
-.navbar-nav > li{
-padding-left:30px;
-padding-right:30px;
-}
-
-.nav-item{
-font-size: 20px;
-color: #b7d6af;
-}
-
-.navbar-brand{
-font-size: 30px;
-font-weight: bold;
-}
-</style>
 
 {% endblock meta %}
 
 {% block content %}
 
 <body>
-    <nav class="navbar navbar-expand-lg" style="background-color: #476f4d;">
-        <div class="container-fluid" >
-          <a class="navbar-brand" href="{% url 'home:show_homepage' %}">
-            <img src="" class="rounded-circle img-fluid" style="width: 60px;">
-            PlasTIX</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 px-10">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'shopping:show_shop' %}">Shopping</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'profilepage:show_profile' %}">Profile</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'news:show_news' %}">News</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'redeem:show_redeem' %}">Redeem</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'recycle:show_recycle' %}">Recycle</a>
-              </li>
-            </ul>
-              <a class="btn btn-dark btn-lg" href="{% url 'home:logout_user' %}">Logout</a>
-          </div>
-        </div>
-      </nav>
-
-    
-    
-      <div style="text-align:center;">
+    <div style="text-align:center;">
         <img src="{%static 'img/bg.png'%}" width="100%">
     <p style="margin: 30px; ">
         PlasTIX hadir untuk membantu kalian semua dalam melakukan daur ulang sampah plastik. Kami menyediakan 2 fitur, yaitu drop off dan pick up. Pada fitur drop off, kami menyediakan beberapa vending machine yang tersedia pada 8 lokasi yang ditampilkan di bawah. Sementara itu, untuk fitur drop off, kami menyediakan jasa penjemputan sampah plastik untuk kalian semua yang berada di daerah Jabodetabek.

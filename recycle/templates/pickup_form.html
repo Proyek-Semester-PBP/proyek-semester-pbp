@@ -2,23 +2,16 @@
 {% load static %}
 {% block meta %}
 <title>Pick Up</title>
-<style>
-    input, textarea {
-        padding: 0.5rem;
-        border: 1px solid;
-        border-radius: 8px;
-        width: 100%
-    }
-</style>
 
 <script src= "https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
-<script src="{% static 'js/pickup.js' %}"></script>
-<link rel="stylesheet" href="{% static 'css/recycle_style.css' %}">
+<script src="{% static 'js/mypickup.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/rec_style.css' %}">
 
 {% endblock meta %}
 
 {% block content %}
 
+<div id="dropoff-card" style="border-radius: 25px; background: #E4DEAE; margin: 60px; padding: 20px; color: #011B10;">
 
 <div class="position-relative mx-auto container flex flex-col gap-4 pt-8" style="margin-top: 15px; text-align: center">
     <div class ="rounded-lg p-4 flex flex-col gap-4 mx-auto bg-base-100;" >
@@ -31,13 +24,14 @@
                 {{ pickup_form.as_table }}
                 <tr>
                     <td colspan="2">
-                        <input id="pickup-btn" style="width: 100%; margin-top: 20px; margin-bottom: 7px;" class="btn btn btn-dark" type="submit" value="Submit">
+                        <input id="pickup-btn" style="width: 100%; margin-top: 20px; margin-bottom: 7px;" class="btn btn btn-success" type="submit" value="Submit">
                     </td>
                 </tr>
             </table>
         </form>
        
     </div>
+</div>
 </div>
 
 {% endblock content %}
