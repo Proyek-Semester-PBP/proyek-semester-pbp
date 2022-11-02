@@ -7,12 +7,6 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Profile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    point = models.BigIntegerField(default=0)
-
-
-# Create your models here.
-class Profile(models.Model):
     user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, default = 0)
     name = models.CharField(max_length = 100, default = 0, null=True)
     email = models.CharField(max_length=254, default = 0, null=True)
