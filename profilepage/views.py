@@ -10,6 +10,7 @@ from django.core.files.storage import FileSystemStorage
 from recycle.models import RecycleHistory
 
 # Create your views here.
+@login_required(login_url='/login/')
 def show_profile(request):
     user = request.user
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
