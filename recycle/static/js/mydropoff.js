@@ -20,13 +20,34 @@ function posting(e) {
       url: '/recycle/add_history/',
       data: data,
       success: function() {
+        fetchData()
         const point = parseInt($("#weight_drop").val()) * 5
         Swal.fire(
             'Congratulations, you get ' + point + ' points',
         )
       },
     });
+    }
 
+    function update(result) {
+      const myElement = $("#history-table");
+      myElement.html('');
+      for (let i = 0; i < result.length; i++) {
+          var myData = result[i].fields;
+          myElement.append(
+              `<tr>`+
+                  `<td>`+myData.name+`</td>`+
+                  `<td>`+myData.date+`</td>`+
+                  `<td>`+myData.location+`</td>`+
+                  `<td>`+myData.weight+` grams</td>`+
+                  `<td>`+myData.description+`</td>`+
+              `</tr>`
+          );
+      }
+  }
+
+    function fetchData() {
+      $.get("/recycle/json/", update)
     }
 
     $(document).ready(() => {

@@ -10,8 +10,7 @@ function posting(e) {
     const detail= $("#addr_pickup").val()
     const description = $("#desc_pickup").val()
     const csrftoken = $("[name=csrfmiddlewaretoken]").val()
-    console.log(weight);
-    const data = {
+    const data_pickup = {
       type: "pickup",
       name: name,
       weight: weight,
@@ -27,7 +26,7 @@ function posting(e) {
     $.ajax({
       type: 'POST',
       url: '/recycle/add_history/',
-      data: data,
+      data: data_pickup,
       success: function() {
       const point = parseInt($("#weight_pickup").val()) * 5
       Swal.fire(

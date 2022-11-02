@@ -76,4 +76,5 @@ def add_history(request):
         # temp.weight += (int(weight))
         # temp.point += (int(weight) * 5)
         # temp.save()
+        return HttpResponse('')
     return redirect('recycle:show_recycle')
