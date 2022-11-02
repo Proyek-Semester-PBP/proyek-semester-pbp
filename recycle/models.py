@@ -7,7 +7,7 @@ class RecycleHistory(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null = True)
     name = models.CharField(default="", max_length=250, null = True)
     date = models.DateTimeField(auto_now=True, null = True)
-    weight = models.PositiveBigIntegerField(default = 0)
+    weight = models.PositiveBigIntegerField()
     point = models.PositiveBigIntegerField(default = 0)
     location = models.TextField(null = True)
     is_pickup = models.BooleanField(default=False, null = True)
