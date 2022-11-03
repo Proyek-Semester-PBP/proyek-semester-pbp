@@ -4,7 +4,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('profilepage', '0005_alter_profile_profpic'),
+        ('profilepage', '0001_initial'),
     ]
 
     operations = [
