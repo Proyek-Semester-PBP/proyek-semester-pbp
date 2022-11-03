@@ -14,8 +14,6 @@ from pathlib import Path
 import os
 import dj_database_url
 from re import template
-import django_heroku
-django_heroku.settings(locals())
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
@@ -96,10 +94,10 @@ DATABASES = {
     }
 }
 
-if PRODUCTION:
-    DATABASES['default'] = dj_database_url.config(
-        conn_max_age=600, ssl_require=True
-    )
+
+DATABASES['default'] = dj_database_url.config(
+    conn_max_age=600, ssl_require=True
+)
 
 
 # Password validation
