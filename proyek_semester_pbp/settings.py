@@ -17,10 +17,12 @@ from re import template
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
+DATABASE_URL = 'postgresql://<postgresql>'
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-PRODUCTION = os.getenv('DATABASE_URL') is not None
+PRODUCTION = os.getenv(DATABASE_URL) is not None
 
 
 # Quick-start development settings - unsuitable for production
@@ -94,10 +96,10 @@ DATABASES = {
     }
 }
 
-
-DATABASES['default'] = dj_database_url.config(
-    conn_max_age=600, ssl_require=True
-)
+if PRODUCTION:
+    DATABASES['default'] = dj_database_url.config(
+        conn_max_age=600, ssl_require=True
+    )
 
 
 # Password validation
