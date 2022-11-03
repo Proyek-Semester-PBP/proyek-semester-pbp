@@ -15,4 +15,4 @@ class Profile(models.Model):
     facebook = models.CharField(max_length = 100, default = 0, null=True)
     point = models.BigIntegerField(default = 0)
     weight = models.BigIntegerField(default=0)
-    profpic = models.ImageField(null = True, upload_to = 'pics/', blank = True)
+    profpic = models.ImageField(null = True, upload_to = 'pics/', blank = True, max_length = 500)
