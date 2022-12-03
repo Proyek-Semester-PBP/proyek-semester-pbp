@@ -34,7 +34,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = [f'https://proyek-semester-pbp.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://proyek-semester-pbp.up.railway.app']
 
 
 # Application definition
