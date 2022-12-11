@@ -26,4 +26,5 @@ urlpatterns = [
     path('redeem/', include('redeem.urls')),
     path('shopping/', include('shopping.urls')),
     path('news/', include('news.urls')),
+    path('auth/', include('authentication.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
