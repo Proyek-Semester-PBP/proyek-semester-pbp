@@ -16,7 +16,7 @@ def login(request):
         if user.is_active:
             auth_login(request, user)
             temp = NewProfile(user)
-            user1 = Profile.objects.filter(id = temp.pk)
+            user1 = Profile.objects.get(user = request.user)
             data = serializers.serialize('json', user1)
             # Redirect to a success page. Tests
             return JsonResponse({
