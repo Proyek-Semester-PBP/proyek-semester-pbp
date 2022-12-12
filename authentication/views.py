@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from profilepage.models import Profile
 from recycle.models import RecycleHistory
+from django.core import serializers
 
 
 @csrf_exempt
@@ -15,12 +16,23 @@ def login(request):
         if user.is_active:
             auth_login(request, user)
             user1 = NewProfile(user)
+            data = serializers.serialize('json', user1)
             # Redirect to a success page.
             return JsonResponse({
             "status": True,
             "message": "Successfully Logged In!",
             # Insert any extra data if you want to pass data to Flutter
-            "user": user1
+            "user": data
+            # "email": user1.email,
+            # "github": user1.github,
+            # "instagram": user1.instagram,
+            # "twitter": user1.twitter,
+            # "facebook": user1.facebook,
+            # "point": user1.point,
+            # "weight": user1.weight,
+            # "profpic": user1.profpic,
+            # "email": user1.email,
+
             }, status=200)
         else:
             return JsonResponse({
