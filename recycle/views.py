@@ -78,3 +78,25 @@ def add_history(request):
         temp.save()
         return HttpResponse('')
     return redirect('recycle:show_recycle')
+    
+@csrf_exempt
+def add_history_flutter(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        weight = request.POST.get('weight')
+        description = request.POST.get('description')
+        is_pickup = request.POST.get('is_pickup')
+        location = request.POST.get('location')
+        new_history = RecycleHistory(
+            user=request.user,
+            name=name,
+            weight=int(weight),
+            point=int(weight)*5,
+            location=location,
+            is_pickup=is_pickup, 
+            description=description,
+        )
+        new_history.save()
+        return JsonResponse({"instance":"Project created"}, status=200)
+    else:
+        return JsonResponse({"Failed"}, status=404)
