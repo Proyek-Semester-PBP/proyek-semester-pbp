@@ -32,7 +32,7 @@ def login(request):
                 "facebook": user1.facebook,
                 "point": user1.point,
                 "weight": user1.weight,
-                "profpic": user1.profpic,
+                "profpic": user1.profpic.path,
                 "email": user1.email,   
             }
             
