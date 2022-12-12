@@ -18,7 +18,7 @@ def login(request):
             temp = NewProfile(user)
             user1 = Profile.objects.filter(id = temp.pk)
             data = serializers.serialize('json', user1)
-            # Redirect to a success page. Test
+            # Redirect to a success page. Tests
             return JsonResponse({
             "status": True,
             "message": "Successfully Logged In!",
