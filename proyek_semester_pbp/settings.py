@@ -69,7 +69,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = ['*']
+CORS_ALLOWED_ORIGINS = ['https://*.up.railway.app']
 CORS_ALLOW_CREDENTIALS = True
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
