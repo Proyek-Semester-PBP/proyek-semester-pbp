@@ -15,8 +15,8 @@ def login(request):
     if user is not None:
         if user.is_active:
             auth_login(request, user)
-            NewProfile(user)
-            user1 = Profile.objects.filter(user = request.user)
+            temp = NewProfile(user)
+            user1 = Profile.objects.filter(id = temp.pk)
             data = serializers.serialize('json', user1)
             # Redirect to a success page.
             return JsonResponse({
@@ -53,6 +53,7 @@ def login(request):
 def NewProfile(user):
     try:
         temp = Profile.objects.get(user = user) 
+        return temp
     except Profile.DoesNotExist:
         url = "https://img.freepik.com/free-vector/cute-cow-surprised-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3874.jpg?w=360"
         RecycleHistory.objects.create(user = user, name = user, date = "-", weight = 0, point = 0, location = "-", is_pickup = False, description = "-")
