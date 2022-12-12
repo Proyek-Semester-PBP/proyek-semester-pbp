@@ -48,7 +48,7 @@ def create_dropoff(request):
     return render(request, 'dropoff_form.html', context)
 
 def show_json(request):
-    data = RecycleHistory.objects.filter(user=request.user).all()
+    data = RecycleHistory.objects.get(user=request.user).all()
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 @csrf_exempt
