@@ -14,7 +14,7 @@ def login(request):
     if user is not None:
         if user.is_active:
             auth_login(request, user)
-            user1 = NewProfile(user)
+            # user1 = NewProfile(user)
             # Redirect to a success page.
             return JsonResponse({
             "status": True,
