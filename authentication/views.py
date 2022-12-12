@@ -23,16 +23,19 @@ def login(request):
             "status": True,
             "message": "Successfully Logged In!",
             # Insert any extra data if you want to pass data to Flutter
-            "user": data
-            # "email": user1.email,
-            # "github": user1.github,
-            # "instagram": user1.instagram,
-            # "twitter": user1.twitter,
-            # "facebook": user1.facebook,
-            # "point": user1.point,
-            # "weight": user1.weight,
-            # "profpic": user1.profpic,
-            # "email": user1.email,
+            "data": {
+                "user": user1.name,
+                "email": user1.email,
+                "github": user1.github,
+                "instagram": user1.instagram,
+                "twitter": user1.twitter,
+                "facebook": user1.facebook,
+                "point": user1.point,
+                "weight": user1.weight,
+                "profpic": user1.profpic,
+                "email": user1.email,   
+            }
+            
 
             }, status=200)
         else:
