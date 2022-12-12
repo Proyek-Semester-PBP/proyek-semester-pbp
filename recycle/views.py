@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core import serializers
 from recycle.models import RecycleHistory
 from recycle.forms import PickUpForm
 from recycle.forms import DropOffForm
 from django.contrib.auth.decorators import login_required
 from profilepage.models import Profile
+from django.views.decorators.csrf import csrf_exempt
 
 def show_dumb(request):
     dropoff_form = DropOffForm()
@@ -49,6 +50,28 @@ def create_dropoff(request):
 def show_json(request):
     data = RecycleHistory.objects.filter(user=request.user).all()
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+@csrf_exempt
+def add_history_flutter(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        weight = request.POST.get('weight')
+        description = request.POST.get('description')
+        is_pickup = request.POST.get('is_pickup')
+        location = request.POST.get('location')
+        new_history = RecycleHistory(
+            user=request.user,
+            name=name,
+            weight=int(weight),
+            point=int(weight)*5,
+            location=location,
+            is_pickup=is_pickup, 
+            description=description,
+        )
+        new_history.save()
+        return JsonResponse({"instance":"Project created"}, status=200)
+    else:
+        return JsonResponse({"Failed"}, status=404)
 
 def add_history(request):
     if request.method == 'POST':
