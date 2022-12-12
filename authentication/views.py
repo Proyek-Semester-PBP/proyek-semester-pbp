@@ -7,24 +7,27 @@ from recycle.models import RecycleHistory
 
 @csrf_exempt
 def login(request):
-    username = request.POST.get('username')
-    password = request.POST.get('password')
-    user = authenticate(username=username, password=password)
-    if user is not None:
-        auth_login(request, user)
-        # Redirect to a success page.
-        user1 = NewProfile(user)
-        return JsonResponse({
-            "status": True,
-            "message": "Successfully Logged In!",
-            # Insert any extra data if you want to pass data to Flutter
-            "user": user1
-        }, status=200)
-    else:
-        return JsonResponse({
-            "status": False,
-            "message": "Failed to Login, Account Disabled."
-        }, status=401)
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            auth_login(request, user)
+            # Redirect to a success page.
+            user1 = NewProfile(user)
+            return JsonResponse({
+                "status": True,
+                "message": "Successfully Logged In!",
+                # Insert any extra data if you want to pass data to Flutter
+                "user": user1
+            }, status=200)
+        else:
+            return JsonResponse({
+                "status": False,
+                "message": "Failed to Login, Account Disabled.",
+                "username": username,
+                "password": password,
+            }, status=401)
 
    
 
