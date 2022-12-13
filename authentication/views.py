@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from profilepage.models import Profile
 from recycle.models import RecycleHistory
 from django.core import serializers
+from django.core.files.storage import FileSystemStorage
 
 
 @csrf_exempt
@@ -62,3 +63,32 @@ def NewProfile(user):
         url = "https://img.freepik.com/free-vector/cute-cow-surprised-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3874.jpg?w=360"
         RecycleHistory.objects.create(user = user, name = user, date = "-", weight = 0, point = 0, location = "-", is_pickup = False, description = "-")
         return Profile.objects.create(user=user, name="-", email="-", mobile="-", github="-", instagram="-", twitter="-", facebook="-", point = 0, weight = 0, profpic = url)
+
+
+def show_profile(request):
+    user = request.user
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        request_type = request.POST.get("request_type")
+        if request_type == "edit_profile":
+            name = request.POST.get("name")
+            email = request.POST.get("email")
+            mobile = request.POST.get("mobile")
+            github = request.POST.get("github")
+            instagram = request.POST.get("instagram")
+            twitter = request.POST.get("twitter")
+            facebook = request.POST.get("facebook")   
+            Profile.objects.filter(user = user).update(name = name, email = email, mobile = mobile, github = github, instagram = instagram, twitter = twitter, facebook = facebook)
+        
+    elif request.method == 'POST' and request.FILES.get('image') != None:
+        myimage = request.FILES['image']
+        fs = FileSystemStorage()
+        filename = fs.save(myimage.name, myimage)
+        url = fs.url(filename)
+        temp = Profile.objects.get(user=user)
+        temp.profpic = url
+        temp.save()
+    
+    return JsonResponse({
+        "status": True,
+        "message": "Success updating profile",
+    }, status=200)
