@@ -67,26 +67,23 @@ def NewProfile(user):
 
 def show_profile(request):
     user = request.user
-    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-        request_type = request.POST.get("request_type")
-        if request_type == "edit_profile":
-            name = request.POST.get("name")
-            email = request.POST.get("email")
-            mobile = request.POST.get("mobile")
-            github = request.POST.get("github")
-            instagram = request.POST.get("instagram")
-            twitter = request.POST.get("twitter")
-            facebook = request.POST.get("facebook")   
-            Profile.objects.filter(user = user).update(name = name, email = email, mobile = mobile, github = github, instagram = instagram, twitter = twitter, facebook = facebook)
+    name = request.POST.get("name")
+    email = request.POST.get("email")
+    mobile = request.POST.get("mobile")
+    github = request.POST.get("github")
+    instagram = request.POST.get("instagram")
+    twitter = request.POST.get("twitter")
+    facebook = request.POST.get("facebook")   
+    Profile.objects.filter(user = user).update(name = name, email = email, mobile = mobile, github = github, instagram = instagram, twitter = twitter, facebook = facebook)
         
-    elif request.method == 'POST' and request.FILES.get('image') != None:
-        myimage = request.FILES['image']
-        fs = FileSystemStorage()
-        filename = fs.save(myimage.name, myimage)
-        url = fs.url(filename)
-        temp = Profile.objects.get(user=user)
-        temp.profpic = url
-        temp.save()
+    # if request.method == 'POST' and request.FILES.get('image') != None:
+    #     myimage = request.FILES['image']
+    #     fs = FileSystemStorage()
+    #     filename = fs.save(myimage.name, myimage)
+    #     url = fs.url(filename)
+    #     temp = Profile.objects.get(user=user)
+    #     temp.profpic = url
+    #     temp.save()
     
     return JsonResponse({
         "status": True,
