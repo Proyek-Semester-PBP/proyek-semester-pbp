@@ -28,6 +28,7 @@ def login(request):
                 "user": request.user.username,
                 "name": user1.name,
                 "email": user1.email,
+                "mobile": user1.mobile,
                 "github": user1.github,
                 "instagram": user1.instagram,
                 "twitter": user1.twitter,
