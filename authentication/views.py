@@ -61,6 +61,12 @@ def register(request):
     password1 = request.POST.get("password1")
     password2 = request.POST.get("password2")
 
+    if not username or not email or not password1 or not password2:
+        return JsonResponse({
+            "status": False,
+            "message": "Missing a field!"
+            }, status=401)
+
     new = User.objects.filter(username = username)
     if new.count():
         return JsonResponse({'success': False, 'message': 'User already exists'}, status=400)
