@@ -65,7 +65,7 @@ def register(request):
     if new.count():
         return JsonResponse({'success': False, 'message': 'User already exists'}, status=400)
     
-    new2 = User.objects,filter(email = email)
+    new2 = User.objects.filter(email = email)
     if new2.count():
         return JsonResponse({'success': False, 'message': 'Email already exists'}, status=400)
     
