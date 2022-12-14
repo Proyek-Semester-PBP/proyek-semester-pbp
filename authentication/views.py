@@ -68,13 +68,13 @@ def NewProfile(user):
 @csrf_exempt
 def show_profile(request):
     user = request.user
-    name = request.POST["name"]
-    email = request.POST["email"]
-    mobile = request.POST["mobile"]
-    github = request.POST["github"]
-    instagram = request.POST["instagram"]
-    twitter = request.POST["twitter"]
-    facebook = request.POST["facebook"]   
+    name = request.POST.get("name")
+    email = request.POST.get("email")
+    mobile = request.POST.get("mobile")
+    github = request.POST.get("github")
+    instagram = request.POST.get("instagram")
+    twitter = request.POST.get("twitter")
+    facebook = request.POST.get("facebook")   
     Profile.objects.filter(user = user).update(name = name, email = email, mobile = mobile, github = github, instagram = instagram, twitter = twitter, facebook = facebook)
         
     # if request.method == 'POST' and request.FILES.get('image') != None:
