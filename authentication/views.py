@@ -125,3 +125,16 @@ def show_profile(request):
         "status": True,
         "message": "Success updating profile",
     }, status=200)
+
+@csrf_exempt
+def addPoint(request):
+    user = request.user
+    weights = request.POST.get("weights")
+    Profile.objects.filter(user = user).update(weights = weights, point = weights*5)
+
+    return JsonResponse({
+        "status": True,
+        "message": "Success updating profile",
+    }, status=200)
+
+    
