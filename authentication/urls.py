@@ -8,5 +8,6 @@ urlpatterns = [
     path('logout/', logout_user, name = 'logout'),
     path('update/', show_profile, name = 'update_profile'),
     path('register/', register, name = "register"),
-    path('addpoints/', addPoint, name = "addPoints")
+    path('addpoints/', addPoint, name = "addPoints"),
+    path('add_history_flutter/', add_history_flutter, name = "addHistory")
 ]
