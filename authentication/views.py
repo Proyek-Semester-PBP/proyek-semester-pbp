@@ -2,10 +2,12 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from home.forms import CustomUserCreationForm
 from profilepage.models import Profile
 from recycle.models import RecycleHistory
 from django.core import serializers
 from django.core.files.storage import FileSystemStorage
+from django.contrib.auth.models import User  
 
 
 @csrf_exempt
@@ -52,6 +54,28 @@ def login(request):
         "status": False,
         "message": "Failed to Login, check your email/password."
         }, status=401)
+@csrf_exempt
+def register(request):
+    username = request.POST.get("username")
+    email = request.POST.get("email")
+    password1 = request.POST.get("password1")
+    password2 = request.POST.get("password2")
+
+    new = User.objects.filter(username = username)
+    if new.count():
+        return JsonResponse({'success': False, 'message': 'User already exists'}, status=400)
+    
+    new2 = User.objects,filter(email = email)
+    if new2.count():
+        return JsonResponse({'success': False, 'message': 'Email already exists'}, status=400)
+    
+    if password1 and password2 and password1 != password2: 
+        return JsonResponse({'success': False, 'message': "Password don't match"}, status=400)
+    
+    user = User.objects.create_user(username, email, password1)
+    return JsonResponse({'success': True, 'message': 'Successfully created a new account'}, status=200)
+
+
 
 @csrf_exempt
 def logout_user(request):
