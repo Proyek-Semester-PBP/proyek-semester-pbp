@@ -131,8 +131,8 @@ def addPoint(request):
     user = request.user
     temp = Profile.objects.get(user = user)
     weights = request.POST.get("weights")
-    new_weight = temp.weight + int(weights)
-    new_points = temp.point + (int(weights)*5)
+    temp.weight += int(weights)
+    temp.point += (int(weights)*5)
     temp.save()
     
     return JsonResponse({
