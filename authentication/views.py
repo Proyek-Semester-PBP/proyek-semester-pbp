@@ -129,9 +129,12 @@ def show_profile(request):
 @csrf_exempt
 def addPoint(request):
     user = request.user
+    temp = Profile.objects.get(user = user)
     weights = request.POST.get("weights")
-    Profile.objects.filter(user = user).update(weight = weights, point = weights*5)
-
+    new_weight = temp.weight + int(weights)
+    new_points = temp.point + (int(weights)*5)
+    temp.save()
+    
     return JsonResponse({
         "status": True,
         "message": "Success updating profile",
