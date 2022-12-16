@@ -134,6 +134,26 @@ def addPoint(request):
     temp.weight += int(weights)
     temp.point += (int(weights)*5)
     temp.save()
+
+    name = request.POST.get('name')
+    # weight = request.POST.get('weight')
+    description = request.POST.get('description')
+    is_pickup = request.POST.get('is_pickup')
+    if is_pickup == 'true':
+        is_pickup = True
+    else:
+        is_pickup = False
+    location = request.POST.get('location')
+    new_history = RecycleHistory(
+            user=request.user,
+            name=name,
+            weight=int(weights),
+            point=int(weights)*5,
+            location=location,
+            is_pickup=is_pickup, 
+            description=description,
+    )
+    new_history.save()
     
     return JsonResponse({
         "status": True,
@@ -142,17 +162,16 @@ def addPoint(request):
 
 @csrf_exempt
 def add_history_flutter(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        weight = request.POST.get('weight')
-        description = request.POST.get('description')
-        is_pickup = request.POST.get('is_pickup')
-        if is_pickup == 'true':
-            is_pickup = True
-        else:
-            is_pickup = False
-        location = request.POST.get('location')
-        new_history = RecycleHistory(
+    name = request.POST.get('name')
+    weight = request.POST.get('weight')
+    description = request.POST.get('description')
+    is_pickup = request.POST.get('is_pickup')
+    if is_pickup == 'true':
+        is_pickup = True
+    else:
+        is_pickup = False
+    location = request.POST.get('location')
+    new_history = RecycleHistory(
             user=request.user,
             name=name,
             weight=int(weight),
@@ -160,16 +179,12 @@ def add_history_flutter(request):
             location=location,
             is_pickup=is_pickup, 
             description=description,
-        )
-        new_history.save()
-        return JsonResponse({
+    )
+    new_history.save()
+    return JsonResponse({
             "status": True,
             "message": "Success",
-        }, status=200)
-    return JsonResponse({
-            "status": False,
-            "message": "Failed",
-    }, status=404)
+    }, status=200)
 
 @csrf_exempt
 def redeem(request):
