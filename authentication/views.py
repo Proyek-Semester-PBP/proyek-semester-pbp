@@ -148,9 +148,9 @@ def add_history_flutter(request):
         description = request.POST.get('description')
         is_pickup = request.POST.get('is_pickup')
         if is_pickup == 'true':
-            is_pickup = true
+            is_pickup = True
         else:
-            is_pickup = false
+            is_pickup = False
         location = request.POST.get('location')
         new_history = RecycleHistory(
             user=request.user,
