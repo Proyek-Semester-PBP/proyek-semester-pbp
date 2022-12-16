@@ -147,6 +147,10 @@ def add_history_flutter(request):
         weight = request.POST.get('weight')
         description = request.POST.get('description')
         is_pickup = request.POST.get('is_pickup')
+        if is_pickup == 'true':
+            is_pickup = true
+        else:
+            is_pickup = false
         location = request.POST.get('location')
         new_history = RecycleHistory(
             user=request.user,
@@ -158,7 +162,7 @@ def add_history_flutter(request):
             description=description,
         )
         new_history.save()
-        return JsonResponse({"instance":"Project created"}, status=200)
+        return JsonResponse({"instance":"Recycle history added"}, status=200)
     else:
         return JsonResponse({"Failed"}, status=404)
 
