@@ -162,4 +162,22 @@ def add_history_flutter(request):
     else:
         return JsonResponse({"Failed"}, status=404)
 
+@csrf_exempt
+def redeem(request):
+    user = request.user
+    point = request.POST.get("points")
+    temp = Profile.objects.get(user = user)
+    if point > temp.point:
+         return JsonResponse({
+        "status": True,
+        "message": "You don't have enough points to redeem!",
+    }, status=400)
+
+    else:
+        temp.point -= point
+        return JsonResponse({
+        "status": True,
+        "message": "Successfuly redeem the item!",
+    }, status=200)
+
     
