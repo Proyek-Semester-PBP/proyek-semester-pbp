@@ -169,7 +169,7 @@ def redeem(request):
     temp = Profile.objects.get(user = user)
     if point > temp.point:
          return JsonResponse({
-        "status": True,
+        "status": False,
         "message": "You don't have enough points to redeem!",
     }, status=400)
 
