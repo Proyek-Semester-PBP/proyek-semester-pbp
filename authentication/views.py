@@ -162,9 +162,14 @@ def add_history_flutter(request):
             description=description,
         )
         new_history.save()
-        return JsonResponse({"instance":"Recycle history added"}, status=200)
-    else:
-        return JsonResponse({"Failed"}, status=404)
+        return JsonResponse({
+            "status": True,
+            "message": "Success",
+        }, status=200)
+    return JsonResponse({
+            "status": False,
+            "message": "Failed",
+    }, status=404)
 
 @csrf_exempt
 def redeem(request):
