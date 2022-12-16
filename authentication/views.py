@@ -172,9 +172,9 @@ def redeem(request):
         "status": False,
         "message": "You don't have enough points to redeem!",
     }, status=400)
-
     else:
         temp.point -= int(point)
+        temp.save()
         return JsonResponse({
         "status": True,
         "message": "Successfuly redeem the item!",
