@@ -167,14 +167,14 @@ def redeem(request):
     user = request.user
     point = request.POST.get("points")
     temp = Profile.objects.get(user = user)
-    if point > temp.point:
+    if int(point) > temp.point:
          return JsonResponse({
         "status": False,
         "message": "You don't have enough points to redeem!",
     }, status=400)
 
     else:
-        temp.point -= point
+        temp.point -= int(point)
         return JsonResponse({
         "status": True,
         "message": "Successfuly redeem the item!",
