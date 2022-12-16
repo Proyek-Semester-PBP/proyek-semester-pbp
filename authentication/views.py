@@ -145,7 +145,7 @@ def addPoint(request):
         is_pickup = False
     location = request.POST.get('location')
     new_history = RecycleHistory(
-            user=request.user,
+            user=user,
             name=name,
             weight=int(weights),
             point=int(weights)*5,
