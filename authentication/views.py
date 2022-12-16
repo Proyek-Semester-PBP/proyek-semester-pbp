@@ -133,58 +133,57 @@ def addPoint(request):
     weights = request.POST.get("weights")
     temp.weight += int(weights)
     temp.point += (int(weights)*5)
-    temp.save()
 
-    name = request.POST.get('name')
-    # weight = request.POST.get('weight')
-    description = request.POST.get('description')
-    is_pickup = request.POST.get('is_pickup')
+    name = request.POST.get("name")
+    description = request.POST.get("description")
+    is_pickup = request.POST.get("is_pickup")
     if is_pickup == 'true':
         is_pickup = True
     else:
         is_pickup = False
-    location = request.POST.get('location')
-    new_history = RecycleHistory(
-            user=user,
-            name=name,
-            weight=int(weights),
-            point=int(weights)*5,
-            location=location,
-            is_pickup=is_pickup, 
-            description=description,
+    location = request.POST.get("location")
+    history = RecycleHistory(
+        user=user,
+        name=name,
+        weight=int(weights),
+        point=int(weights)*5,
+        location=location,
+        is_pickup=is_pickup, 
+        description=description,
     )
-    new_history.save()
+    history.save()
+    temp.save()
     
     return JsonResponse({
         "status": True,
         "message": "Success updating profile",
     }, status=200)
 
-@csrf_exempt
-def add_history_flutter(request):
-    name = request.POST.get('name')
-    weight = request.POST.get('weight')
-    description = request.POST.get('description')
-    is_pickup = request.POST.get('is_pickup')
-    if is_pickup == 'true':
-        is_pickup = True
-    else:
-        is_pickup = False
-    location = request.POST.get('location')
-    new_history = RecycleHistory(
-            user=request.user,
-            name=name,
-            weight=int(weight),
-            point=int(weight)*5,
-            location=location,
-            is_pickup=is_pickup, 
-            description=description,
-    )
-    new_history.save()
-    return JsonResponse({
-            "status": True,
-            "message": "Success",
-    }, status=200)
+# @csrf_exempt
+# def add_history_flutter(request):
+#     name = request.POST.get('name')
+#     weight = request.POST.get('weight')
+#     description = request.POST.get('description')
+#     is_pickup = request.POST.get('is_pickup')
+#     if is_pickup == 'true':
+#         is_pickup = True
+#     else:
+#         is_pickup = False
+#     location = request.POST.get('location')
+#     new_history = RecycleHistory(
+#             user=request.user,
+#             name=name,
+#             weight=int(weight),
+#             point=int(weight)*5,
+#             location=location,
+#             is_pickup=is_pickup, 
+#             description=description,
+#     )
+#     new_history.save()
+#     return JsonResponse({
+#             "status": True,
+#             "message": "Success",
+#     }, status=200)
 
 @csrf_exempt
 def redeem(request):
