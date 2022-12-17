@@ -7,7 +7,9 @@ from profilepage.models import Profile
 from recycle.models import RecycleHistory
 from django.core import serializers
 from django.core.files.storage import FileSystemStorage
-from django.contrib.auth.models import User  
+from django.contrib.auth.models import User
+
+from shopping.models import Review  
 
 
 @csrf_exempt
@@ -201,6 +203,24 @@ def redeem(request):
         return JsonResponse({
         "status": True,
         "message": "Successfuly redeem the item!",
+    }, status=200)
+
+@csrf_exempt
+def post_review(request):
+    item = request.POST.get('item')
+    name = request.user.get_username()
+    rating = request.POST.get('rating')
+    comment = request.POST.get('comment')
+    review_data = Review(
+            item = item,
+            name = name,
+            rating = rating,
+            comment = comment,
+    )
+    review_data.save()
+    return JsonResponse({
+            "status": True,
+            "message": "Success",
     }, status=200)
 
     

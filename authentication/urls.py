@@ -10,5 +10,6 @@ urlpatterns = [
     path('register/', register, name = "register"),
     path('addpoints/', addPoint, name = "addPoints"),
     path('add_history_flutter/', add_history_flutter, name = "addHistory"),
-    path('redeem/', redeem, name = "redeem")
+    path('redeem/', redeem, name = "redeem"),
+    path('post_review/', post_review, name = "post_review"),
 ]
