@@ -12,6 +12,7 @@ urlpatterns = [
     path('add_history_flutter/', add_history_flutter, name = "addHistory"),
     path('redeem/', redeem, name = "redeem"),
     path('post_review/', post_review, name = "post_review"),
+    path('show_bookmarks/', show_bookmarks, name='show_bookmarks'),
     path('bookmark/<int:id>', bookmark_item, name='bookmark_item'),
     path('remove_bookmark/<int:id>', remove_bookmark, name='remove_bookmark'),
 ]

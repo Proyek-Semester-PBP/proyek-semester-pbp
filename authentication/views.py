@@ -223,6 +223,11 @@ def post_review(request):
     }, status=200)
 
 @csrf_exempt
+def show_bookmarks(request):
+    bookmark_data = RecommendedItem.objects.filter(bookmarks=request.user)
+    return HttpResponse(serializers.serialize("json", bookmark_data), content_type="application/json")
+
+@csrf_exempt
 def bookmark_item(request, id):
     bookmarked_item = RecommendedItem.objects.filter(pk=id).get()
     bookmarked_item.bookmarks.add(request.user)
