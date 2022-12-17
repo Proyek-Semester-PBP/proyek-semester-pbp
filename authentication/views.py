@@ -208,12 +208,12 @@ def redeem(request):
 @csrf_exempt
 def post_review(request):
     item = request.POST.get('item')
-    name = request.user.get_username()
+    user = request.user.get_username()
     rating = request.POST.get('rating')
     comment = request.POST.get('comment')
     review_data = Review(
             item = item,
-            name = name,
+            user = user,
             rating = int(rating),
             comment = comment,
     )
