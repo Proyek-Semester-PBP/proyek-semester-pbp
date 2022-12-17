@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login as auth_login, logout
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from home.forms import CustomUserCreationForm
 from profilepage.models import Profile
@@ -8,8 +8,7 @@ from recycle.models import RecycleHistory
 from django.core import serializers
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.models import User
-
-from shopping.models import Review  
+from shopping.models import RecommendedItem, Review  
 
 
 @csrf_exempt
@@ -223,4 +222,21 @@ def post_review(request):
             "message": "Success",
     }, status=200)
 
-    
+@csrf_exempt
+def bookmark_item(request, id):
+    bookmarked_item = RecommendedItem.objects.filter(pk=id).get()
+    bookmarked_item.bookmarks.add(request.user)
+    bookmarked_item.save()
+    return JsonResponse({
+            "status": True,
+            "message": "Success",
+    }, status=200)
+
+@csrf_exempt
+def remove_bookmark(request, id):
+    bookmarked_item = RecommendedItem.objects.filter(pk=id).get()
+    bookmarked_item.bookmarks.remove(request.user)
+    return JsonResponse({
+            "status": True,
+            "message": "Success",
+    }, status=200)
