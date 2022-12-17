@@ -214,7 +214,7 @@ def post_review(request):
     review_data = Review(
             item = item,
             name = name,
-            rating = rating,
+            rating = int(rating),
             comment = comment,
     )
     review_data.save()
